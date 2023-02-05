@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Basics &ndash; cl-waffe
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="basics"] {
+       /*color: #AD3108;*/
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc li a[data-node="basics"] {
+       font-weight: bold;
+   }
+
+   .toc li a[data-node="basics"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="basics"] + ol li {
+       margin-left: 10px;
+   }
+  </style>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">cl-waffe</h1>
+  <article id="article" data-section="basics">
+    <aside>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#welcome-to-cl-waffe!" data-node="welcome-to-cl-waffe!">Welcome to cl-waffe!</a></li><li><a href="overview.html#todo-list-and-problems" data-node="todo-list-and-problems">Todo List And Problems</a></li><li><a href="overview.html#pull-requests" data-node="pull-requests">Pull Requests</a></li><li><a href="overview.html#contacts" data-node="contacts">Contacts</a></li><li><a href="overview.html#lla-setting" data-node="lla-setting">LLA Setting</a></li><li><a href="overview.html#when-memory-exhausted" data-node="when-memory-exhausted">When Memory Exhausted</a></li></ol></li><li><a href="basics.html" data-node="basics">Basics</a><ol><li><a href="basics.html#first" data-node="first">First</a></li><li><a href="basics.html#define-your-model" data-node="define-your-model">Define Your Model</a></li><li><a href="basics.html#define-your-dataset" data-node="define-your-dataset">Define Your Dataset</a><ol><li><a href="cl-waffe's-dataset--waffedataset.html" data-node="cl-waffe's-dataset--waffedataset">cl-waffe's Dataset: WaffeDataSet</a></li></ol></li><li><a href="basics.html#train-your-model" data-node="train-your-model">Train Your Model</a></li></ol></li><li><a href="advanced.html" data-node="advanced">Advanced</a><ol><li><a href="exported.html" data-node="exported">Exported</a></li></ol></li><li><a href="basic-tensor-operations.html" data-node="basic-tensor-operations">Basic Tensor Operations</a><ol><li><a href="0-basic-tensor-operations.html" data-node="0-basic-tensor-operations">Basic Tensor Operations</a></li></ol></li><li><a href="cl-waffe.html" data-node="cl-waffe">cl-waffe</a><ol><li><a href="package--cl-waffe.html" data-node="package--cl-waffe">Package: cl-waffe</a></li><li><a href="defining-objects.html" data-node="defining-objects">Defining objects</a></li><li><a href="documents-in-cl-waffe's-object.html" data-node="documents-in-cl-waffe's-object">Documents in cl-waffe's object</a></li><li><a href="tensor.html" data-node="tensor">Tensor</a><ol><li><a href="basic-of-tensor-and-backward.html" data-node="basic-of-tensor-and-backward">Basic of Tensor and backward</a><ol><li><a href="initialize-tensor.html" data-node="initialize-tensor">Initialize Tensor</a><ol><li><a href="parameters.html" data-node="parameters">Parameters</a></li><li><a href="constants.html" data-node="constants">Constants</a></li><li><a href="tensor-vs-const.html" data-node="tensor-vs-const">Tensor vs Const</a></li></ol></li></ol></li><li><a href="forward-nodes.html" data-node="forward-nodes">Forward Nodes</a></li><li><a href="exported-parameters.html" data-node="exported-parameters">Exported Parameters</a></li><li><a href="types.html" data-node="types">Types</a></li><li><a href="accessor.html" data-node="accessor">Accessor</a></li></ol></li><li><a href="initialize-constants.html" data-node="initialize-constants">Initialize Constants</a></li><li><a href="cut-and-displace-tensor.html" data-node="cut-and-displace-tensor">Cut and Displace Tensor</a></li><li><a href="shaping.html" data-node="shaping">Shaping</a></li><li><a href="operations.html" data-node="operations">Operations</a></li><li><a href="math-functions.html" data-node="math-functions">Math Functions</a></li><li><a href="activations.html" data-node="activations">Activations</a></li><li><a href="utils-for-defnode.html" data-node="utils-for-defnode">Utils for defnode</a></li><li><a href="train-and-valid.html" data-node="train-and-valid">Train And Valid</a></li><li><a href="datasets.html" data-node="datasets">Datasets</a><ol><li><a href="1-cl-waffe's-dataset--waffedataset.html" data-node="1-cl-waffe's-dataset--waffedataset">cl-waffe's Dataset: WaffeDataSet</a></li></ol></li></ol></li><li><a href="cl-waffe.nn.html" data-node="cl-waffe.nn">cl-waffe.nn</a><ol><li><a href="models.html" data-node="models">Models</a><ol><li><a href="cl-waffe's-model--embedding.html" data-node="cl-waffe's-model--embedding">cl-waffe's Model: Embedding</a></li><li><a href="2-cl-waffe's-model--embedding.html" data-node="2-cl-waffe's-model--embedding">cl-waffe's Model: Embedding</a></li><li><a href="cl-waffe's-model--rnn.html" data-node="cl-waffe's-model--rnn">cl-waffe's Model: RNN</a></li></ol></li><li><a href="aggregations.html" data-node="aggregations">aggregations</a><ol><li><a href="cl-waffe's-node--dropout.html" data-node="cl-waffe's-node--dropout">cl-waffe's Node: Dropout</a></li><li><a href="cl-waffe's-model--batchnorm2d.html" data-node="cl-waffe's-model--batchnorm2d">cl-waffe's Model: BatchNorm2d</a></li></ol></li><li><a href="losses.html" data-node="losses">losses</a></li></ol></li><li><a href="cl-waffe.optimizers.html" data-node="cl-waffe.optimizers">cl-waffe.optimizers</a><ol><li><a href="sgd.html" data-node="sgd">SGD</a><ol><li><a href="cl-waffe's-optimizer--sgd.html" data-node="cl-waffe's-optimizer--sgd">cl-waffe's Optimizer: SGD</a></li></ol></li><li><a href="momentum.html" data-node="momentum">Momentum</a><ol><li><a href="cl-waffe's-optimizer--momentum.html" data-node="cl-waffe's-optimizer--momentum">cl-waffe's Optimizer: Momentum</a></li></ol></li><li><a href="adagrad.html" data-node="adagrad">AdaGrad</a><ol><li><a href="cl-waffe's-optimizer--adagrad.html" data-node="cl-waffe's-optimizer--adagrad">cl-waffe's Optimizer: AdaGrad</a></li></ol></li><li><a href="rmsprop.html" data-node="rmsprop">RMSProp</a><ol><li><a href="cl-waffe's-optimizer--rmsprop.html" data-node="cl-waffe's-optimizer--rmsprop">cl-waffe's Optimizer: RMSProp</a></li></ol></li><li><a href="adam.html" data-node="adam">Adam</a><ol><li><a href="cl-waffe's-optimizer--adam.html" data-node="cl-waffe's-optimizer--adam">cl-waffe's Optimizer: Adam</a></li></ol></li></ol></li><li><a href="cl-waffe.io.html" data-node="cl-waffe.io">cl-waffe.io</a><ol><li><a href="3-exported.html" data-node="3-exported">Exported</a></li></ol></li><li><a href="cl-waffe.caches.html" data-node="cl-waffe.caches">cl-waffe.caches</a><ol><li><a href="4-exported.html" data-node="4-exported">Exported</a></li></ol></li></ol>
+    </aside>
+    <main class="codex-section">
+      <header>
+        <h2 class="section-title">Basics</h2>
+      </header>
+      <div class="content">
+        <h1 id="first">First</h1><p>
+Thank you for having an interest in my framework.</p><p>In this section, we define Simple MLP with cl-waffe, and train MNIST.</p><p>Let's get started!</p><p>
+</p><h1 id="define-your-model">Define Your Model</h1><u>Define the structure of the network using cl-waffe</u><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">defmodel</code><code class="codex-lambda-list">(name args &amp;key (parameters nil) (forward (quasiquote ((&amp;rest args) (error :forward isn't defined.)))) (optimize nil) (document An model, defined by cl-waffe))</code><div class="codex-docstring"><p>This macro defines a cl-waffe model as <code class="codex-param">name</code>.</p><p>At the same time, a constructor <code class="codex-param">name</code> is defined and you can initialize your model like:</p><pre><code class="lisp">(cl-waffe.nn:LinearLayer 100 20) ; =&gt; [Model: Linearlayer]
+</code></pre><p>
+</p><dl><dt>name</dt><dd>Your model and constructor name</dd><dt>args</dt><dd>The arguments of a constructor</dd><dt>parameters</dt><dd><p>The parameters your model has.</p><p>Every time you initialize the model, the parameters are initialized.</p><p>Note that <code class="codex-param">defmodel</code> behaves like class.</p><p>The arguments are the same as <a href="http://l1sp.org/cl/defstruct"><code>defstruct</code></a></p><p>Format Example: ((param-name param-initial-value &amp;key (type your-type)))</p></dd><dt>optimize</dt><dd>when t, your forward slot is defined with (declare (optimize (speed 3)(space 0)(debug 0))). It helps faster training after you ensured debugged.</dd><dt>forward</dt><dd><p>Define here the forward propagation of your model.</p><p>When backward, <b>Automatic differentiation applies</b>.</p></dd></dl><p>
+</p></div></div>
+</p><p>The defmodel macro is the most basic unit when defining your network in cl-waffe.</p><p>Let's check a example and define 3 layers MLP.</p><pre><code class="lisp">; ensure (use-package :cl-waffe) and (use-package :cl-waffe.nn)
+
+(defmodel MLP (activation)
+  :parameters ((layer1   (denselayer (* 28 28) 512 T activation))
+	       (layer2   (denselayer 512 256 T activation))
+	       (layer3   (linearlayer 256 10 T)))
+  :forward ((x)
+            (call (self layer3)
+	          (call (self layer2)
+		        (call (self layer1) x)))))
+
+</code></pre><p>See :parameters, <code class="codex-param">cl-waffe.nn</code> exports denselayer and linearlayer where constructors are `(in-features out-features &amp;optional (bias T)(activation :relu))`.</p><p>And, when <code class="codex-param">MLP</code> are inited, layer1~layer3 are initied.</p><p>In :forward, define your forward propagations.</p><p>You can access your model's parameter through macro (self name), and this is just <a href="http://l1sp.org/cl/slot-value"><code>slot-value</code></a>, so it's setfable.</p><p>You can call :forward step by using the function <code class="codex-param">call</code>.
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">call</code><code class="codex-lambda-list">(model &amp;rest args)</code><div class="codex-docstring"><p>Calling Forward Step defined by defmodel, defnode, defoptimizer.</p><p>And building computation node as long as *no-grad* is nil.</p><dl><dt>model</dt><dd>Your initialized model/node/optimizer objects</dd><dt>args</dt><dd>The args :forward needs</dd></dl><p>Output: =&gt; <code class="codex-param">tensor</code> produced by :forward</p></div></div>
+</p><p>Whether you are lisper or not, It is natural that you think MLP's :forward is too rebundant.</p><p>So, the macro `(with-calling-layers)` is exported and you can rewrite it concisely.<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-calling-layers</code><code class="codex-lambda-list">(input &amp;rest layers)</code><div class="codex-docstring"><p>This macro allows to sequentially call layers.</p><p>the argument <code class="codex-param">input</code> must be a tensor.</p><p>Refering each layers from (self) macro, destructively modifying x with the returned value.</p><pre><code class="lisp">(defmodel MLP (activation)
+   :parameters ((layer1   (denselayer (* 28 28) 512 T activation))
+   	        (layer2   (denselayer 512 256 T activation))
+	        (layer3   (linearlayer 256 10 T)))
+   :forward ((x)
+	     (with-calling-layers x
+	       (layer1 x)
+ 	       (layer2 x)
+               (layer3 x))))
+</code></pre><p>For the different arguments.</p><pre><code class="lisp">(with-calling-layers x
+     (layer1 x 1 1)
+     (layer2 1 x 2)
+     (layer3 x y))
+</code></pre><p>Output: An last value of layers.</p></div></div></p><p>You can see <code class="codex-param">MLP</code> requires <code class="codex-param">activation</code> which indicates the type of activation where <code class="codex-param">activation</code> is symbol.</p><p>Finally, this is how MLP is defined.</p><pre><code class="lisp">(defmodel MLP (activation)
+  :parameters ((layer1   (denselayer (* 28 28) 512 T activation))
+	       (layer2   (denselayer 512 256 T activation))
+	       (layer3   (linearlayer 256 10 T)))
+  :forward ((x)
+	    (with-calling-layers x
+	      (layer1 x)
+ 	      (layer2 x)
+	      (layer3 x))))
+
+(setq model (MLP :relu)) ; =&gt; [Model: MLP]
+
+</code></pre><h1 id="define-your-dataset">Define Your Dataset</h1><u>Define the structure of the datasets available to the cl-waffe API.</u><p><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">defdataset</code><code class="codex-lambda-list">(name args &amp;key parameters next length (document An dataset structure defined by cl-waffe.))</code><div class="codex-docstring"><p>Defining dataset. (This is kinda pytorch's dataloader)</p><p>The slots you defined can be invoked by using (get-dataset dataset index)(get-length dataset).</p><dl><dt>parameters</dt><dd>parameters datasets have.</dd><dt>next</dt><dd>when function (get-dataset dataset index) is called, this slot invokes. Return waffetensor for the next batch in response to your task.</dd><dt>length</dt><dd>In this form, the function must return the total length of your datasets where the value is fixnum. (Not a batch, and not a current index.)</dd></dl><pre><code class="lisp">(defdataset Mnistdata (train valid batch-size)
+  :parameters ((train train)(valid valid)(batch-size batch-size))
+  :next    ((index)
+	    (list (!set-batch (self train) index (self batch-size))
+		  (!set-batch (self valid) index (self batch-size))))
+  :length (()(car (!shape (self train)))))
+
+</code></pre><p>cl-waffe excepts index to be 1, 2, 3, ... (dataset-maxlen)</p><p>So, please manage batch-sizes in args and :next slots.</p></div></div></p><p>It is not always necessary to define a Dataset, but it is required to use the trainer described below.</p><p>In real, the format of the dataset is similar for different task, so I will use the default dataloader defined in the standard.<div class="codex-doc-node codex-record codex-structure"><code class="codex-name">waffedataset</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Constructor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(waffedataset train valid &amp;key (batch-size 1) &amp;aux (train train) (valid valid) (batch-size batch-size))</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Predicate:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">waffedataset-p</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Copier:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">copy-waffedataset</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Print Function:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">print-dataset</code></td></tr></table></div><div class="codex-docstring"><h2 id="cl-waffe's-dataset--waffedataset">cl-waffe's Dataset: WaffeDataSet</h2>
+<b>This structure is an cl-waffe object</b> 
+<dl><dt>Overview</dt><dd>The standard dataset for 2d training data.</dd><dt>How to Initialize</dt><dd><pre><code class="lisp">(WaffeDataSet train valid &amp;key (batch-size 1)) =&gt; [DATASET: WaffeDataSet]
+</code></pre>
+</dd><dt>get-dataset</dt><dd><pre><code class="lisp">(get-dataset WaffeDataSet index) ; =&gt; Next Batch
+</code></pre>
+</dd><dt>get-dataset-length</dt><dd><pre><code class="lisp">(get-dataset-length WaffeDataSet) ; =&gt; Total length of WaffeDataSet
+</code></pre>
+</dd><dt>Object's slots</dt><dd></dd></dl>
+</div><ul class="codex-slot-list"><li class="codex-slot codex-structure-slot"><code class="codex-name">train</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe:waffetensor</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffedataset-train</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe:train</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">valid</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe:waffetensor</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffedataset-valid</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::valid</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">batch-size</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">fixnum</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffedataset-batch-size</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::batch-size</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">length</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffedataset-length</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">t</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">dataset-next</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffedataset-dataset-next</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">t</code></td></tr></table></div></li></ul></div>
+</p></p><p>Write your own programme to load your dataset and initialize the Dataloader</p><p>However, a package called cl-waffe.io, exports functions to read data in libsvm format, since there is no unified library for reading data for different tasks in CommonLisp as far as I know. <b>(This package is temporary and APIs will change without notice in the near future.)</b></p><p>Finally, this is How dataset created:</p><pre><code class="lisp">; ensure (use-package :cl-waffe.io)(use-package :cl-waffe)
+; In ./examples/install.sh, here's downloader of mnist.
+; Please make change the pathname of MNIST yourself if necessary.
+
+(multiple-value-bind (datamat target)
+    (read-libsvm-data &quot;examples/tmp/mnist.scale&quot; 784 10 :most-min-class 0)
+  (defparameter mnist-dataset datamat)
+  (defparameter mnist-target target))
+
+(multiple-value-bind (datamat target)
+    (read-libsvm-data &quot;examples/tmp/mnist.scale.t&quot; 784 10 :most-min-class 0)
+  (defparameter mnist-dataset-test datamat)
+  (defparameter mnist-target-test target))
+
+(defparameter train (WaffeDataSet mnist-dataset mnist-target :batch-size 100))
+(defparameter valid (WaffeDataSet mnist-dataset-test mnist-target-test :batch-size 100))
+    
+</code></pre><h1 id="train-your-model">Train Your Model</h1><p>
+<u>The model is automatically trained using the train function and deftrainer macro.</u></p><p>The function <code class="codex-param">train</code> can start training automatically, given <code class="codex-param">trainer</code> object defined by deftrainer.</p><p>Of course, an API is provided for manual definition.
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">deftrainer</code><code class="codex-lambda-list">(name args &amp;key model optimizer optimizer-args step-model predict (document An trainer structure defined by cl-waffe.))</code><div class="codex-docstring"><p>Defining trainer, which is made in order to call <code class="codex-param">train</code> function.</p><p>The slots you defined can be invoked by using <code>(step-model model &amp;rest args)</code>, <code>(predict model &amp;rest args)</code>. See below.</p><p>
+</p><dl><dt>model</dt><dd>An model defined by <code>(defmodel)</code> which you want to train.</dd><dt>optimizer</dt><dd>An optimizer defined by <code>(defoptimizer)</code></dd><dt>optimizer-args</dt><dd>An arguments for optimizer</dd><dt>step-model</dt><dd>For each batch step, :step-model is called in <code>(train)</code> function. Describe here forward step, backward, zero-grad, update for training.</dd><dt>predict</dt><dd>an code for predicting</dd></dl><p>
+These macro below are defined by <a href="http://l1sp.org/cl/macrolet"><code>macrolet</code></a> and you can use them in :step-model, :predict</p><dl><dt>(self name)</dt><dd>access trainer's parameters.</dd><dt>(model)</dt><dd>access trainer's model, defined by :model keyword.</dd><dt>(zero-grad)</dt><dd>Find model's all parameters and constants, and initialize their grads. (i.e. call optimizer's backward)</dd><dt>(update)</dt><dd>Find model's all parameters, and call optimizer and change parameter's data. (i.e. call optimizer's forward)</dd></dl><p>This trainer macro is defined in order to integrate following works:</p><ol><li>calling models</li><li>calling criterions</li><li>calling backward</li><li>calling optimizer</li><li>calling zero-grad</li><li>defining predict</li></ol><p>Example:</p><pre><code class="lisp">(deftrainer MLPTrainer (activation lr)
+  :model          (MLP activation)
+  :optimizer      cl-waffe.optimizers:Adam ; Note: :optimizer requires a single variable.
+  :optimizer-args (:lr lr) ; these arguments directly expanded to optimizer's args.
+  :step-model ((x y)
+	       (zero-grad) ; call zero-grad
+	       (let ((out (cl-waffe.nn:softmax-cross-entropy (call (model) x) y))) ; get criterion
+		 (backward out) ; backward
+		 (update) ; call optimizer
+		 out)) ; return loss
+ :predict ((x)(call (model) x))) ;for predict
+
+(setq trainer (MLPTrainer :relu 1e-4)) ; init your trainer
+
+; Train:   (step-model trainer model-input-x model-input-y)
+; Predict: (predict trainer model-input-x)
+
+</code></pre></div></div>
+</p><p>Init your trainer like...</p><pre><code class="lisp">(deftrainer MLPTrainer (activation lr)
+  :model          (MLP activation)
+  :optimizer      cl-waffe.optimizers:Adam
+  :optimizer-args (:lr lr)
+  :step-model ((x y)
+	       (zero-grad)
+	       (let ((out (cl-waffe.nn:softmax-cross-entropy (call (model) x) y)))
+		 (backward out)
+		 (update)
+		 out))
+ :predict ((x)(call (model) x)))
+ 
+</code></pre><p>So, everything is now ready to go.</p><p>Now all you have to do is to pass your <code class="codex-param">trainer</code>, <code class="codex-param">dataset</code> to <code class="codex-param">train</code></p><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">train</code><code class="codex-lambda-list">(trainer dataset &amp;key (valid-dataset nil) (valid-each 100) (enable-animation t) (epoch 1) (batch-size 1) (max-iterate nil) (verbose t) (stream t) (progress-bar-freq 1) (save-model-path nil) (width 45) (random nil) (height 10) (print-each 10))</code><div class="codex-docstring"><p>Trainining given trainer. If any, valid <code class="codex-param">valid-dataset</code></p><dl><dt>trainer</dt><dd>Trainer you defined by deftrainer</dd><dt>dataset</dt><dd>Dataset you defined by defdataset</dd><dt>valid-dataset</dt><dd>If valid-dataset=your dataset, use this to valid. If nil, ignored</dd><dt>enable-animation</dt><dd>Ignored</dd><dt>epoch</dt><dd>Iterate training by epoch, default=1</dd><dt>batch-size</dt><dd>Do batch training. default=1</dd><dt>verbose</dt><dd>if t, put log to stream</dd></dl><p>This function is temporary and other arguments are ignored.</p><p>And this function has a lot of todo.</p></div></div>
+</p><p>So, The whole code looks like this:</p><pre><code class="lisp">(defpackage :mnist-example
+  (:use :cl :cl-waffe :cl-waffe.nn :cl-waffe.io))
+
+(in-package :mnist-example)
+
+; set batch as 100
+(defparameter batch-size 100)
+
+; Define Model Using defmodel
+(defmodel MLP (activation)
+  :parameters ((layer1   (denselayer (* 28 28) 512 T activation))
+	       (layer2   (denselayer 512 256 T activation))
+	       (layer3   (linearlayer 256 10 T)))
+  :forward ((x)
+	    (with-calling-layers x
+	      (layer1 x)
+ 	      (layer2 x)
+	      (layer3 x))))
+
+; Define Trainer Using deftrainer
+(deftrainer MLPTrainer (activation lr)
+  :model          (MLP activation)
+  :optimizer      cl-waffe.optimizers:Adam
+  :optimizer-args (:lr lr)
+  :step-model ((x y)
+	       (zero-grad)
+	       (let ((out (cl-waffe.nn:softmax-cross-entropy (call (model) x) y)))
+		 (backward out)
+		 (update)
+		 out))
+ :predict ((x)(call (model) x)))
+
+; Initialize your trainer
+(defparameter trainer (MLPTrainer :relu 1e-4))
+
+; Loading MNIST Dataset Using cl-waffe.io
+(format t &quot;Loading examples/tmp/mnist.scale ...~%&quot;)
+  
+(multiple-value-bind (datamat target)
+    (read-libsvm-data &quot;examples/tmp/mnist.scale&quot; 784 10 :most-min-class 0)
+  (defparameter mnist-dataset datamat)
+  (defparameter mnist-target target))
+
+(format t &quot;Loading examples/tmp/mnist.scale.t~%&quot;)
+
+(multiple-value-bind (datamat target)
+    (read-libsvm-data &quot;examples/tmp/mnist.scale.t&quot; 784 10 :most-min-class 0)
+  (defparameter mnist-dataset-test datamat)
+  (defparameter mnist-target-test target))
+
+; Initialize Your Dataset
+(defparameter train (WaffeDataSet mnist-dataset
+                                  mnist-target
+			          :batch-size batch-size))
+
+(defparameter test (WaffeDataSet mnist-dataset-test
+			         mnist-target-test
+			         :batch-size 100))
+(time (train
+         trainer
+	 train
+	 :epoch 30
+	 :batch-size batch-size
+	 :valid-dataset test
+         :verbose t
+	 :random t
+	 :print-each 100))
+
+; Accuracy would be approximately about 0.9685294
+
+</code></pre><p>You can either define a package and copy this or <code>$ ./run-test-model.ros mnist</code> is available to run this. (It needs roswell)</p><p>
+</p>
+      </div>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>

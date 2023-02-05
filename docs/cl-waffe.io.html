@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  cl-waffe.io &ndash; cl-waffe
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="cl-waffe.io"] {
+       /*color: #AD3108;*/
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc li a[data-node="cl-waffe.io"] {
+       font-weight: bold;
+   }
+
+   .toc li a[data-node="cl-waffe.io"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="cl-waffe.io"] + ol li {
+       margin-left: 10px;
+   }
+  </style>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">cl-waffe</h1>
+  <article id="article" data-section="cl-waffe.io">
+    <aside>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#welcome-to-cl-waffe!" data-node="welcome-to-cl-waffe!">Welcome to cl-waffe!</a></li><li><a href="overview.html#todo-list-and-problems" data-node="todo-list-and-problems">Todo List And Problems</a></li><li><a href="overview.html#pull-requests" data-node="pull-requests">Pull Requests</a></li><li><a href="overview.html#contacts" data-node="contacts">Contacts</a></li><li><a href="overview.html#lla-setting" data-node="lla-setting">LLA Setting</a></li><li><a href="overview.html#when-memory-exhausted" data-node="when-memory-exhausted">When Memory Exhausted</a></li></ol></li><li><a href="basics.html" data-node="basics">Basics</a><ol><li><a href="basics.html#first" data-node="first">First</a></li><li><a href="basics.html#define-your-model" data-node="define-your-model">Define Your Model</a></li><li><a href="basics.html#define-your-dataset" data-node="define-your-dataset">Define Your Dataset</a><ol><li><a href="cl-waffe's-dataset--waffedataset.html" data-node="cl-waffe's-dataset--waffedataset">cl-waffe's Dataset: WaffeDataSet</a></li></ol></li><li><a href="basics.html#train-your-model" data-node="train-your-model">Train Your Model</a></li></ol></li><li><a href="advanced.html" data-node="advanced">Advanced</a><ol><li><a href="advanced.html#exported" data-node="exported">Exported</a></li></ol></li><li><a href="basic-tensor-operations.html" data-node="basic-tensor-operations">Basic Tensor Operations</a><ol><li><a href="basic-tensor-operations.html#0-basic-tensor-operations" data-node="0-basic-tensor-operations">Basic Tensor Operations</a></li></ol></li><li><a href="cl-waffe.html" data-node="cl-waffe">cl-waffe</a><ol><li><a href="cl-waffe.html#package--cl-waffe" data-node="package--cl-waffe">Package: cl-waffe</a></li><li><a href="cl-waffe.html#defining-objects" data-node="defining-objects">Defining objects</a></li><li><a href="cl-waffe.html#documents-in-cl-waffe's-object" data-node="documents-in-cl-waffe's-object">Documents in cl-waffe's object</a></li><li><a href="cl-waffe.html#tensor" data-node="tensor">Tensor</a><ol><li><a href="cl-waffe.html#basic-of-tensor-and-backward" data-node="basic-of-tensor-and-backward">Basic of Tensor and backward</a><ol><li><a href="cl-waffe.html#initialize-tensor" data-node="initialize-tensor">Initialize Tensor</a><ol><li><a href="cl-waffe.html#parameters" data-node="parameters">Parameters</a></li><li><a href="cl-waffe.html#constants" data-node="constants">Constants</a></li><li><a href="cl-waffe.html#tensor-vs-const" data-node="tensor-vs-const">Tensor vs Const</a></li></ol></li></ol></li><li><a href="cl-waffe.html#forward-nodes" data-node="forward-nodes">Forward Nodes</a></li><li><a href="cl-waffe.html#exported-parameters" data-node="exported-parameters">Exported Parameters</a></li><li><a href="cl-waffe.html#types" data-node="types">Types</a></li><li><a href="cl-waffe.html#accessor" data-node="accessor">Accessor</a></li></ol></li><li><a href="cl-waffe.html#initialize-constants" data-node="initialize-constants">Initialize Constants</a></li><li><a href="cl-waffe.html#cut-and-displace-tensor" data-node="cut-and-displace-tensor">Cut and Displace Tensor</a></li><li><a href="cl-waffe.html#shaping" data-node="shaping">Shaping</a></li><li><a href="cl-waffe.html#operations" data-node="operations">Operations</a></li><li><a href="cl-waffe.html#math-functions" data-node="math-functions">Math Functions</a></li><li><a href="cl-waffe.html#activations" data-node="activations">Activations</a></li><li><a href="cl-waffe.html#utils-for-defnode" data-node="utils-for-defnode">Utils for defnode</a></li><li><a href="cl-waffe.html#train-and-valid" data-node="train-and-valid">Train And Valid</a></li><li><a href="cl-waffe.html#datasets" data-node="datasets">Datasets</a><ol><li><a href="1-cl-waffe's-dataset--waffedataset.html" data-node="1-cl-waffe's-dataset--waffedataset">cl-waffe's Dataset: WaffeDataSet</a></li></ol></li></ol></li><li><a href="cl-waffe.nn.html" data-node="cl-waffe.nn">cl-waffe.nn</a><ol><li><a href="cl-waffe.nn.html#models" data-node="models">Models</a><ol><li><a href="cl-waffe's-model--embedding.html" data-node="cl-waffe's-model--embedding">cl-waffe's Model: Embedding</a></li><li><a href="2-cl-waffe's-model--embedding.html" data-node="2-cl-waffe's-model--embedding">cl-waffe's Model: Embedding</a></li><li><a href="cl-waffe's-model--rnn.html" data-node="cl-waffe's-model--rnn">cl-waffe's Model: RNN</a></li></ol></li><li><a href="cl-waffe.nn.html#aggregations" data-node="aggregations">aggregations</a><ol><li><a href="cl-waffe's-node--dropout.html" data-node="cl-waffe's-node--dropout">cl-waffe's Node: Dropout</a></li><li><a href="cl-waffe's-model--batchnorm2d.html" data-node="cl-waffe's-model--batchnorm2d">cl-waffe's Model: BatchNorm2d</a></li></ol></li><li><a href="cl-waffe.nn.html#losses" data-node="losses">losses</a></li></ol></li><li><a href="cl-waffe.optimizers.html" data-node="cl-waffe.optimizers">cl-waffe.optimizers</a><ol><li><a href="cl-waffe.optimizers.html#sgd" data-node="sgd">SGD</a><ol><li><a href="cl-waffe's-optimizer--sgd.html" data-node="cl-waffe's-optimizer--sgd">cl-waffe's Optimizer: SGD</a></li></ol></li><li><a href="cl-waffe.optimizers.html#momentum" data-node="momentum">Momentum</a><ol><li><a href="cl-waffe's-optimizer--momentum.html" data-node="cl-waffe's-optimizer--momentum">cl-waffe's Optimizer: Momentum</a></li></ol></li><li><a href="cl-waffe.optimizers.html#adagrad" data-node="adagrad">AdaGrad</a><ol><li><a href="cl-waffe's-optimizer--adagrad.html" data-node="cl-waffe's-optimizer--adagrad">cl-waffe's Optimizer: AdaGrad</a></li></ol></li><li><a href="cl-waffe.optimizers.html#rmsprop" data-node="rmsprop">RMSProp</a><ol><li><a href="cl-waffe's-optimizer--rmsprop.html" data-node="cl-waffe's-optimizer--rmsprop">cl-waffe's Optimizer: RMSProp</a></li></ol></li><li><a href="cl-waffe.optimizers.html#adam" data-node="adam">Adam</a><ol><li><a href="cl-waffe's-optimizer--adam.html" data-node="cl-waffe's-optimizer--adam">cl-waffe's Optimizer: Adam</a></li></ol></li></ol></li><li><a href="cl-waffe.io.html" data-node="cl-waffe.io">cl-waffe.io</a><ol><li><a href="cl-waffe.io.html#3-exported" data-node="3-exported">Exported</a></li></ol></li><li><a href="cl-waffe.caches.html" data-node="cl-waffe.caches">cl-waffe.caches</a><ol><li><a href="4-exported.html" data-node="4-exported">Exported</a></li></ol></li></ol>
+    </aside>
+    <main class="codex-section">
+      <header>
+        <h2 class="section-title">cl-waffe.io</h2>
+      </header>
+      <div class="content">
+        <h1 id="3-exported">Exported</h1><p>Here's nothing. Coming soon.
+
+</p>
+      </div>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>
