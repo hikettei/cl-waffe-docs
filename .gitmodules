@@ -1,0 +1,3 @@
+[submodule "cl-waffe"]
+	path = cl-waffe
+	url = https://github.com/hikettei/cl-waffe.git
