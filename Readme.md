@@ -4,9 +4,10 @@
 ### Build documentation
 
 ```shell
-$ cd ./cl-waffe
-$ ./roswell/gendoc.ros
+$ sh cl-waffe.sh fetch
+$ sh cl-waffe.sh gen
+$ sh cl-waffe.sh move
+$ sh cl-waffe.sh add
+$ sh cl-waffe.sh commit
+$ sh cl-waffe.sh deploy
 ```
-
-And then, move artifacts to `./docs` (run copydoc.sh)
-
