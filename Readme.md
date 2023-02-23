@@ -4,10 +4,10 @@
 ### Build documentation
 
 ```shell
-$ sh cl-waffe.sh fetch
-$ sh cl-waffe.sh gen
-$ sh cl-waffe.sh move
-$ sh cl-waffe.sh add
-$ sh cl-waffe.sh commit
-$ sh cl-waffe.sh deploy
+$ sh cl-waffe.sh fetch ; fetch the latest cl-waffe from original repos of main branch.
+$ sh cl-waffe.sh gen ; run gendoc.ros
+$ sh cl-waffe.sh move ; move produced files to ./docs
+$ sh cl-waffe.sh add ; git add ./docs
+$ sh cl-waffe.sh commit ; git commit them
+$ sh cl-waffe.sh deploy ; git push origin main
 ```
