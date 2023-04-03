@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  &lt;APIs: cl-waffe&gt; &ndash; cl-waffe
+</title>
+    <link rel="stylesheet" href="static/style.css"/>
+    
+  <link rel="stylesheet" href="static/highlight.css"/>
+  <script src="static/highlight.js"></script>
+  <style>
+   /* Highlight the current top-level TOC item, and hide the TOC of all other items */
+
+   .toc a[data-node="&lt;apis--cl-waffe&gt;"] {
+       /*color: #AD3108;*/
+   }
+
+   .toc ol {
+       display: none;
+   }
+
+   .toc li a[data-node="&lt;apis--cl-waffe&gt;"] {
+       font-weight: bold;
+   }
+
+   .toc li a[data-node="&lt;apis--cl-waffe&gt;"] + ol {
+       display: block;
+   }
+
+   .toc li a[data-node="&lt;apis--cl-waffe&gt;"] + ol li {
+       margin-left: 10px;
+   }
+  </style>
+
+  </head>
+  <body>
+    
+  <h1 class="doc-title">cl-waffe</h1>
+  <article id="article" data-section="&lt;apis--cl-waffe&gt;">
+    <aside>
+      <ol class="toc"><li><a href="overview.html" data-node="overview">Overview</a><ol><li><a href="overview.html#about-this-project" data-node="about-this-project">About This Project</a></li><li><a href="overview.html#links" data-node="links">Links</a></li><li><a href="overview.html#workloads" data-node="workloads">Workloads</a></li><li><a href="overview.html#lla-backend" data-node="lla-backend">LLA Backend</a></li><li><a href="overview.html#when-memory-heap-is-exhasted?" data-node="when-memory-heap-is-exhasted?">When Memory Heap Is Exhasted?</a></li></ol></li><li><a href="tutorials.html" data-node="tutorials">Tutorials</a><ol><li><a href="tutorials.html#introducing-waffetensor" data-node="introducing-waffetensor">Introducing WaffeTensor</a><ol><li><a href="tutorials.html#what-can-waffetensor-do?" data-node="what-can-waffetensor-do?">What can WaffeTensor do?</a><ol><li><a href="tutorials.html#to-restore-computation-nodes" data-node="to-restore-computation-nodes">To Restore Computation Nodes</a></li><li><a href="tutorials.html#to-restore-gradients" data-node="to-restore-gradients">To Restore Gradients</a></li><li><a href="tutorials.html#to-distinguish-what-tensor-requires-gradients" data-node="to-distinguish-what-tensor-requires-gradients">To distinguish What Tensor Requires Gradients</a></li><li><a href="tutorials.html#to-store-lazy-evaluated-object" data-node="to-store-lazy-evaluated-object">To Store Lazy-Evaluated Object</a></li></ol></li><li><a href="tutorials.html#parameter-and-const" data-node="parameter-and-const">Parameter and Const</a><ol><li><a href="tutorials.html#initialize-constants" data-node="initialize-constants">Initialize Constants</a></li><li><a href="tutorials.html#initialize-parameter" data-node="initialize-parameter">Initialize Parameter</a></li><li><a href="tutorials.html#parameter-vs-constant" data-node="parameter-vs-constant">Parameter vs Constant</a></li></ol></li></ol></li><li><a href="tutorials.html#defnode-and-call" data-node="defnode-and-call">defnode and call</a></li><li><a href="tutorials.html#writing-node-extensions" data-node="writing-node-extensions">Writing Node Extensions</a></li><li><a href="tutorials.html#mnist-example" data-node="mnist-example">MNIST Example</a><ol><li><a href="tutorials.html#defines-your-model" data-node="defines-your-model">Defines your model</a></li><li><a href="tutorials.html#define-your-trainer" data-node="define-your-trainer">define your trainer</a></li></ol></li></ol></li><li><a href="tips.html" data-node="tips">Tips</a><ol><li><a href="tips.html#destructive-operations" data-node="destructive-operations">Destructive Operations</a></li><li><a href="tips.html#using-other-libraries-with-facet-apis" data-node="using-other-libraries-with-facet-apis">Using other libraries with Facet APIs</a></li><li><a href="tips.html#zero-cost-transpose" data-node="zero-cost-transpose">Zero-cost Transpose</a></li><li><a href="tips.html#logging" data-node="logging">Logging</a></li></ol></li><li><a href="features.html" data-node="features">Features</a><ol><li><a href="features.html#defmodel" data-node="defmodel">defmodel</a></li><li><a href="features.html#defnode" data-node="defnode">defnode</a></li><li><a href="features.html#defoptimizer" data-node="defoptimizer">defoptimizer</a></li><li><a href="features.html#deftrainer" data-node="deftrainer">deftrainer</a></li><li><a href="features.html#defdataset" data-node="defdataset">defdataset</a></li><li><a href="features.html#environment-variables" data-node="environment-variables">Environment Variables</a></li></ol></li><li><a href="package--cl-waffe.html" data-node="package--cl-waffe">Package :cl-waffe</a><ol><li><a href="package--cl-waffe.html#tensors" data-node="tensors">Tensors</a></li><li><a href="package--cl-waffe.html#gradients" data-node="gradients">Gradients</a></li><li><a href="package--cl-waffe.html#four-arithmetic-operations" data-node="four-arithmetic-operations">Four Arithmetic Operations</a></li><li><a href="package--cl-waffe.html#summarize" data-node="summarize">Summarize</a></li><li><a href="package--cl-waffe.html#multiplying-matrices" data-node="multiplying-matrices">Multiplying matrices</a></li><li><a href="package--cl-waffe.html#trigonometric-functions" data-node="trigonometric-functions">Trigonometric Functions</a></li><li><a href="package--cl-waffe.html#mathematical-functions" data-node="mathematical-functions">Mathematical Functions</a></li><li><a href="package--cl-waffe.html#reshaping" data-node="reshaping">Reshaping</a></li><li><a href="package--cl-waffe.html#shaping" data-node="shaping">Shaping</a></li><li><a href="package--cl-waffe.html#concatenate-and-split" data-node="concatenate-and-split">Concatenate and Split</a></li><li><a href="package--cl-waffe.html#iterations-and-making-copy" data-node="iterations-and-making-copy">Iterations and Making Copy</a></li><li><a href="package--cl-waffe.html#sampling-distributions" data-node="sampling-distributions">Sampling Distributions</a></li><li><a href="package--cl-waffe.html#initializes-the-tensor" data-node="initializes-the-tensor">Initializes the tensor</a></li><li><a href="package--cl-waffe.html#activations" data-node="activations">Activations</a></li><li><a href="package--cl-waffe.html#0-logging" data-node="0-logging">Logging</a></li><li><a href="package--cl-waffe.html#dtype" data-node="dtype">Dtype</a></li><li><a href="package--cl-waffe.html#extensions" data-node="extensions">Extensions</a></li><li><a href="package--cl-waffe.html#1-destructive-operations" data-node="1-destructive-operations">Destructive Operations</a></li><li><a href="package--cl-waffe.html#objects" data-node="objects">Objects</a></li><li><a href="package--cl-waffe.html#trainer" data-node="trainer">Trainer</a></li><li><a href="package--cl-waffe.html#dataset" data-node="dataset">Dataset</a></li><li><a href="package--cl-waffe.html#model-list" data-node="model-list">Model List</a></li><li><a href="package--cl-waffe.html#printing" data-node="printing">Printing</a></li></ol></li><li><a href="package--cl-waffe.nn.html" data-node="package--cl-waffe.nn">Package :cl-waffe.nn</a></li><li><a href="package--cl-waffe.optimizers.html" data-node="package--cl-waffe.optimizers">Package :cl-waffe.optimizers</a></li><li><a href="conditions.html" data-node="conditions">Conditions</a></li><li><a href="<apis--cl-waffe>.html" data-node="<apis--cl-waffe>">&lt;APIs: cl-waffe&gt;</a><ol><li><a href="<apis--cl-waffe>.html#!normal" data-node="!normal">!normal</a></li><li><a href="<apis--cl-waffe>.html#!randn" data-node="!randn">!randn</a></li><li><a href="<apis--cl-waffe>.html#!uniform-random" data-node="!uniform-random">!uniform-random</a></li><li><a href="<apis--cl-waffe>.html#!beta" data-node="!beta">!beta</a></li><li><a href="<apis--cl-waffe>.html#!gamma" data-node="!gamma">!gamma</a></li><li><a href="<apis--cl-waffe>.html#!chisquare" data-node="!chisquare">!chisquare</a></li><li><a href="<apis--cl-waffe>.html#!bernoulli" data-node="!bernoulli">!bernoulli</a></li><li><a href="<apis--cl-waffe>.html#!binomial" data-node="!binomial">!binomial</a></li><li><a href="<apis--cl-waffe>.html#!random-with" data-node="!random-with">!random-with</a></li><li><a href="<apis--cl-waffe>.html#!random" data-node="!random">!random</a></li><li><a href="<apis--cl-waffe>.html#!zeros-like" data-node="!zeros-like">!zeros-like</a></li><li><a href="<apis--cl-waffe>.html#!ones-like" data-node="!ones-like">!ones-like</a></li><li><a href="<apis--cl-waffe>.html#!full-like" data-node="!full-like">!full-like</a></li><li><a href="<apis--cl-waffe>.html#!zeros" data-node="!zeros">!zeros</a></li><li><a href="<apis--cl-waffe>.html#!ones" data-node="!ones">!ones</a></li><li><a href="<apis--cl-waffe>.html#!fill" data-node="!fill">!fill</a></li><li><a href="<apis--cl-waffe>.html#!shape" data-node="!shape">!shape</a></li><li><a href="<apis--cl-waffe>.html#!dims" data-node="!dims">!dims</a></li><li><a href="<apis--cl-waffe>.html#!size" data-node="!size">!size</a></li><li><a href="<apis--cl-waffe>.html#waffetensor" data-node="waffetensor">WaffeTensor</a></li><li><a href="<apis--cl-waffe>.html#parameter" data-node="parameter">parameter</a></li><li><a href="<apis--cl-waffe>.html#data" data-node="data">data</a></li><li><a href="<apis--cl-waffe>.html#value" data-node="value">value</a></li><li><a href="<apis--cl-waffe>.html#backward" data-node="backward">backward</a></li><li><a href="<apis--cl-waffe>.html#with-no-grad" data-node="with-no-grad">with-no-grad</a></li><li><a href="<apis--cl-waffe>.html#*no-grad*" data-node="*no-grad*">*no-grad*</a></li><li><a href="<apis--cl-waffe>.html#!add" data-node="!add">!add</a><ol><li><a href="examples.html" data-node="examples">Examples</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!!add" data-node="!!add">!!add</a></li><li><a href="<apis--cl-waffe>.html#!sub" data-node="!sub">!sub</a><ol><li><a href="2-examples.html" data-node="2-examples">Examples</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!!sub" data-node="!!sub">!!sub</a></li><li><a href="<apis--cl-waffe>.html#!mul" data-node="!mul">!mul</a><ol><li><a href="3-examples.html" data-node="3-examples">Examples</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!!mul" data-node="!!mul">!!mul</a></li><li><a href="<apis--cl-waffe>.html#!div" data-node="!div">!div</a><ol><li><a href="4-examples.html" data-node="4-examples">Examples</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!sum" data-node="!sum">!sum</a><ol><li><a href="arguments.html" data-node="arguments">arguments</a></li><li><a href="example.html" data-node="example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!mean" data-node="!mean">!mean</a><ol><li><a href="5-example.html" data-node="5-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!dot" data-node="!dot">!dot</a><ol><li><a href="6-example.html" data-node="6-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!matmul" data-node="!matmul">!matmul</a></li><li><a href="<apis--cl-waffe>.html#!sin" data-node="!sin">!sin</a><ol><li><a href="7-example.html" data-node="7-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!cos" data-node="!cos">!cos</a><ol><li><a href="8-example.html" data-node="8-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!tan" data-node="!tan">!tan</a><ol><li><a href="9-example.html" data-node="9-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!asin" data-node="!asin">!asin</a></li><li><a href="<apis--cl-waffe>.html#!acos" data-node="!acos">!acos</a></li><li><a href="<apis--cl-waffe>.html#!atan" data-node="!atan">!atan</a></li><li><a href="<apis--cl-waffe>.html#!sinh" data-node="!sinh">!sinh</a><ol><li><a href="10-example.html" data-node="10-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!cosh" data-node="!cosh">!cosh</a><ol><li><a href="11-example.html" data-node="11-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!tanh" data-node="!tanh">!tanh</a></li><li><a href="<apis--cl-waffe>.html#!asinh" data-node="!asinh">!asinh</a></li><li><a href="<apis--cl-waffe>.html#!acosh" data-node="!acosh">!acosh</a></li><li><a href="<apis--cl-waffe>.html#!atanh" data-node="!atanh">!atanh</a></li><li><a href="<apis--cl-waffe>.html#!abs" data-node="!abs">!abs</a></li><li><a href="<apis--cl-waffe>.html#!log" data-node="!log">!log</a><ol><li><a href="12-example.html" data-node="12-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!exp" data-node="!exp">!exp</a><ol><li><a href="13-example.html" data-node="13-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!pow" data-node="!pow">!pow</a><ol><li><a href="14-example.html" data-node="14-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!sqrt" data-node="!sqrt">!sqrt</a><ol><li><a href="15-example.html" data-node="15-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!argmax" data-node="!argmax">!argmax</a><ol><li><a href="16-example.html" data-node="16-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!argmin" data-node="!argmin">!argmin</a><ol><li><a href="17-example.html" data-node="17-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!squeeze" data-node="!squeeze">!squeeze</a><ol><li><a href="18-example.html" data-node="18-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!unsqueeze" data-node="!unsqueeze">!unsqueeze</a><ol><li><a href="19-example.html" data-node="19-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!reshape" data-node="!reshape">!reshape</a><ol><li><a href="20-example.html" data-node="20-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!repeats" data-node="!repeats">!repeats</a><ol><li><a href="21-example.html" data-node="21-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!flatten" data-node="!flatten">!flatten</a></li><li><a href="<apis--cl-waffe>.html#!transpose" data-node="!transpose">!transpose</a><ol><li><a href="22-example.html" data-node="22-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!transpose1" data-node="!transpose1">!transpose1</a><ol><li><a href="23-example.html" data-node="23-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!concatenate" data-node="!concatenate">!concatenate</a><ol><li><a href="24-example.html" data-node="24-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!stack" data-node="!stack">!stack</a><ol><li><a href="25-example.html" data-node="25-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!split" data-node="!split">!split</a><ol><li><a href="26-example.html" data-node="26-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!hstack" data-node="!hstack">!hstack</a></li><li><a href="<apis--cl-waffe>.html#!vstack" data-node="!vstack">!vstack</a></li><li><a href="<apis--cl-waffe>.html#!aref" data-node="!aref">!aref</a></li><li><a href="<apis--cl-waffe>.html#!where" data-node="!where">!where</a><ol><li><a href="27-example.html" data-node="27-example">Example</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!index" data-node="!index">!index</a></li><li><a href="<apis--cl-waffe>.html#!filter" data-node="!filter">!filter</a></li><li><a href="<apis--cl-waffe>.html#!arange" data-node="!arange">!arange</a><ol><li><a href="(-!arange-stop-).html" data-node="(-!arange-stop-)">(!arange stop)</a></li><li><a href="(-!arange-start-stop-).html" data-node="(-!arange-start-stop-)">(!arange start stop)</a></li><li><a href="(-!arange-start-stop-step-).html" data-node="(-!arange-start-stop-step-)">(!arange start stop step)</a></li></ol></li><li><a href="<apis--cl-waffe>.html#!relu" data-node="!relu">!relu</a></li><li><a href="<apis--cl-waffe>.html#!sigmoid" data-node="!sigmoid">!sigmoid</a></li><li><a href="<apis--cl-waffe>.html#!gelu" data-node="!gelu">!gelu</a></li><li><a href="<apis--cl-waffe>.html#!leakey-relu" data-node="!leakey-relu">!leakey-relu</a></li><li><a href="<apis--cl-waffe>.html#!swish" data-node="!swish">!swish</a></li><li><a href="<apis--cl-waffe>.html#!softmax" data-node="!softmax">!softmax</a></li><li><a href="<apis--cl-waffe>.html#with-verbose" data-node="with-verbose">with-verbose</a></li><li><a href="<apis--cl-waffe>.html#with-dtype" data-node="with-dtype">with-dtype</a></li><li><a href="<apis--cl-waffe>.html#dtypecase" data-node="dtypecase">dtypecase</a></li><li><a href="<apis--cl-waffe>.html#define-with-typevar" data-node="define-with-typevar">define-with-typevar</a></li><li><a href="<apis--cl-waffe>.html#with-backend" data-node="with-backend">with-backend</a></li><li><a href="<apis--cl-waffe>.html#define-node-extension" data-node="define-node-extension">define-node-extension</a></li><li><a href="<apis--cl-waffe>.html#*restart-non-exist-backend*" data-node="*restart-non-exist-backend*">*restart-non-exist-backend*</a></li><li><a href="<apis--cl-waffe>.html#!allow-destruct" data-node="!allow-destruct">!allow-destruct</a></li><li><a href="<apis--cl-waffe>.html#!disallow-destruct" data-node="!disallow-destruct">!disallow-destruct</a></li><li><a href="<apis--cl-waffe>.html#28-defnode" data-node="28-defnode">defnode</a></li><li><a href="<apis--cl-waffe>.html#29-defmodel" data-node="29-defmodel">defmodel</a></li><li><a href="<apis--cl-waffe>.html#30-defoptimizer" data-node="30-defoptimizer">defoptimizer</a></li><li><a href="<apis--cl-waffe>.html#call" data-node="call">call</a></li><li><a href="<apis--cl-waffe>.html#call-backward" data-node="call-backward">call-backward</a></li><li><a href="<apis--cl-waffe>.html#self" data-node="self">self</a></li><li><a href="<apis--cl-waffe>.html#save-for-backward" data-node="save-for-backward">save-for-backward</a></li><li><a href="<apis--cl-waffe>.html#get-forward-caller" data-node="get-forward-caller">get-forward-caller</a></li><li><a href="<apis--cl-waffe>.html#get-backward-caller" data-node="get-backward-caller">get-backward-caller</a></li><li><a href="<apis--cl-waffe>.html#with-calling-layers" data-node="with-calling-layers">with-calling-layers</a></li><li><a href="<apis--cl-waffe>.html#31-deftrainer" data-node="31-deftrainer">deftrainer</a></li><li><a href="<apis--cl-waffe>.html#step-model" data-node="step-model">step-model</a></li><li><a href="<apis--cl-waffe>.html#predict" data-node="predict">predict</a></li><li><a href="<apis--cl-waffe>.html#model" data-node="model">model</a></li><li><a href="<apis--cl-waffe>.html#update" data-node="update">update</a></li><li><a href="<apis--cl-waffe>.html#zero-grad" data-node="zero-grad">zero-grad</a></li><li><a href="<apis--cl-waffe>.html#32-defdataset" data-node="32-defdataset">defdataset</a></li><li><a href="<apis--cl-waffe>.html#get-dataset" data-node="get-dataset">get-dataset</a></li><li><a href="<apis--cl-waffe>.html#get-dataset-length" data-node="get-dataset-length">get-dataset-length</a></li><li><a href="<apis--cl-waffe>.html#33-model-list" data-node="33-model-list">model-list</a></li><li><a href="<apis--cl-waffe>.html#mlist" data-node="mlist">mlist</a></li><li><a href="<apis--cl-waffe>.html#mth" data-node="mth">mth</a></li><li><a href="<apis--cl-waffe>.html#grad" data-node="grad">grad</a></li></ol></li><li><a href="<apis--cl-waffe.nn>.html" data-node="<apis--cl-waffe.nn>">&lt;APIs: cl-waffe.nn&gt;</a></li><li><a href="<apis--cl-waffe.optimizers>.html" data-node="<apis--cl-waffe.optimizers>">&lt;APIs: cl-waffe.optimizers&gt;</a></li></ol>
+    </aside>
+    <main class="codex-section">
+      <header>
+        <h2 class="section-title">&lt;APIs: cl-waffe&gt;</h2>
+      </header>
+      <div class="content">
+        
+<h1 id="!normal">!normal</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!normal</code><code class="codex-lambda-list">(dims &amp;optional (mean 2.0) (stddev 1.0))</code><div class="codex-docstring">Initializes the new tensor with sampling the standard distribution.</div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!normal `(10 10)) :mean 2.0 :stddev 1.0
+</code></pre><pre><code class="lisp">#Const(((1.594... 0.639... ~ 2.525... 2.090...)        
+                 ...
+        (2.286... 3.429... ~ 3.609... 1.797...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!randn">!randn</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!randn</code><code class="codex-lambda-list">(dims)</code><div class="codex-docstring">Initializes the new tensor of dims with sampling normal distribution where mean=0.0, stddev=1.0</div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!randn `(10 10))
+</code></pre><pre><code class="lisp">#Const(((-0.17... -1.02... ~ 0.113... 0.739...)        
+                 ...
+        (-0.45... 1.984... ~ 2.218... -0.37...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!uniform-random">!uniform-random</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!uniform-random</code><code class="codex-lambda-list">(dims &amp;key (limit 1))</code><div class="codex-docstring"><p>Initializes tensor with sampling uniform random.</p><p>The returned tensor is filled by random numbers 0&lt;=x&lt;limit</p></div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!uniform-random `(10 10) :limit 2.0)
+</code></pre><pre><code class="lisp">#Const(((1.955... 1.711... ~ 1.089... 1.056...)        
+                 ...
+        (0.377... 1.914... ~ 1.782... 0.836...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!beta">!beta</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!beta</code><code class="codex-lambda-list">(dims alpha beta)</code><div class="codex-docstring"><p>Initializes the new tensor of dims with sampling beta distribution.</p><p>Algorithm: https://dl.acm.org/doi/pdf/10.1145/359460.359482</p></div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!beta `(10 10) 5.0 1.0)
+</code></pre><pre><code class="lisp">#Const(((0.964... 0.841... ~ 0.807... 0.935...)        
+                 ...
+        (0.777... 0.952... ~ 0.466... 0.995...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!gamma">!gamma</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!gamma</code><code class="codex-lambda-list">(dims k &amp;optional (theta 1.0))</code><div class="codex-docstring">Initializes the new tensor of dims with samples of gamma distribution.</div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!gamma `(10 10) 1.0)
+</code></pre><pre><code class="lisp">#Const(((0.354... 0.924... ~ 0.569... 1.162...)        
+                 ...
+        (0.700... 0.695... ~ 1.189... 0.379...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!chisquare">!chisquare</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!chisquare</code><code class="codex-lambda-list">(dims df)</code><div class="codex-docstring">Initializes tensor with samples of chi-square distribution using the gamma distribution..</div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!chisquare `(10 10) 2.0)
+</code></pre><pre><code class="lisp">#Const(((0.822... 8.489... ~ 0.238... 0.073...)        
+                 ...
+        (0.245... 0.905... ~ 1.428... 2.083...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!bernoulli">!bernoulli</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!bernoulli</code><code class="codex-lambda-list">(dims rate)</code><div class="codex-docstring">Initializes the tensor of dims with sampling bernoulli distribution, where p=rate. p=[0, 1]</div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!bernoulli `(10 10) 0.5)
+</code></pre><pre><code class="lisp">#Const(((1.0 0.0 ~ 1.0 1.0)        
+                 ...
+        (1.0 1.0 ~ 0.0 1.0)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!binomial">!binomial</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!binomial</code><code class="codex-lambda-list">(dims rate)</code><div class="codex-docstring">Alias for !bernoulli</div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!binomial `(10 10) 0.5)
+</code></pre><pre><code class="lisp">#Const(((0.0 0.0 ~ 1.0 0.0)        
+                 ...
+        (0.0 0.0 ~ 0.0 1.0)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!random-with">!random-with</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!random-with</code><code class="codex-lambda-list">(dims f)</code><div class="codex-docstring"><p>Initializes the tensor of dims. Each element is initialized with <code class="codex-param">f</code>, f is a funcallable function. and called with the index of the tensor.</p><p>See also: !init-with which is alias for !random-with.
+</p></div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!random-with '(10 10) #'(lambda (n) n))
+</code></pre><pre><code class="lisp">#Const(((0.0 1.0 ~ 8.0 9.0)        
+                 ...
+        (90.0 91.0 ~ 98.0 99.0)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!random">!random</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!random</code><code class="codex-lambda-list">(dims limit)</code><div class="codex-docstring">Initializes the new tensor of dims. Each element is consisted of a uniform-random within limit. limit must be following: fixnum, single-float, cons. and depending on this !random has a multiple behaviours.
+</div></div>
+</p><p><b>REPL:</b>
+</p><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) 1.0)
+</code></pre><pre><code class="lisp">#Const(((0.840... 0.956... ~ 0.640... 0.208...)        
+                 ...
+        (0.212... 0.374... ~ 0.474... 0.948...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) 3)
+</code></pre><pre><code class="lisp">#Const(((0.0 2.0 ~ 1.0 2.0)        
+                 ...
+        (1.0 0.0 ~ 2.0 0.0)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) `(1.0 2.0))
+</code></pre><pre><code class="lisp">#Const(((1.079... 1.547... ~ 1.897... 1.650...)        
+                 ...
+        (1.142... 1.691... ~ 1.221... 1.478...)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) `(1 5))
+</code></pre><pre><code class="lisp">#Const(((1.0 3.0 ~ 3.0 3.0)        
+                 ...
+        (4.0 1.0 ~ 1.0 2.0)) :dtype :float :shape (10 10) :backward NIL)
+</code></pre>
+<h1 id="!zeros-like">!zeros-like</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!zeros-like</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Return a const where the shape is the same as tensor but elements are zero.</p><p>Example:
+</p><pre><code class="lisp">(setq a (!randn `(10 10)))
+(!zeros-like a)
+;#Const(((0.0 0.0 ~ 0.0 0.0)        
+;                 ...
+;        (0.0 0.0 ~ 0.0 0.0)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!ones-like">!ones-like</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!ones-like</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring">Return a const where the shape is the same as tensor but elements are one.
+Example:
+<pre><code class="lisp">(setq a (!randn `(10 10)))
+(!ones-like a)
+;#Const(((1.0 1.0 ~ 1.0 1.0)        
+;                 ...
+;        (1.0 1.0 ~ 1.0 1.0)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!full-like">!full-like</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!full-like</code><code class="codex-lambda-list">(tensor element)</code><div class="codex-docstring">Return a const where the shape is the same as tensor but elements are specified value by <code class="codex-param">element</code>.
+Example:
+<pre><code class="lisp">(setq a (!randn `(10 10)))
+(!full-like a 3)
+;#Const(((3.0 3.0 ~ 3.0 3.0)        
+;                 ...
+;        (3.0 3.0 ~ 3.0 3.0)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!zeros">!zeros</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!zeros</code><code class="codex-lambda-list">(shape)</code><div class="codex-docstring"><p>Initializing constant tensor with given shape, where initial elements are zero.</p><p>Input: shape (cons)</p><p>Output: Tensor (which is constant)</p><p>Example:
+</p><pre><code class="lisp">(!zeros `(10 10))
+;#Const(((0.0 0.0 ~ 0.0 0.0)        
+;                ...
+;        (0.0 0.0 ~ 0.0 0.0)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!ones">!ones</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!ones</code><code class="codex-lambda-list">(shape)</code><div class="codex-docstring"><p>The same as !zeros but initial element is one.</p><p>Example:
+</p><pre><code class="lisp">(!ones `(10 10))
+;#Const(((1.0 1.0 ~ 1.0 1.0)        
+;                ...
+;        (1.0 1.0 ~ 1.0 1.0)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!fill">!fill</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!fill</code><code class="codex-lambda-list">(shape element)</code><div class="codex-docstring"><p>The same as !zeros, !ones but initial element is given element.</p><p>Note: the argument <code class="codex-param">element</code> coerced into <code class="codex-param">mgl-mat:*default-mat-ctype*</code></p><p>Example:
+</p><pre><code class="lisp">(!fill '(10 10) 10)
+;#Const(((10.0 10.0 ~ 10.0 10.0)        
+;                  ...
+;        (10.0 10.0 ~ 10.0 10.0)) :mgl t :shape (10 10))
+</code></pre><p>
+</p></div></div>
+</p>
+<h1 id="!shape">!shape</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!shape</code><code class="codex-lambda-list">(tensor &amp;optional (nth nil))</code><div class="codex-docstring"><p>Returns the shape of tensor when nth=nil.<code class="codex-param">nth</code> indicates the index of shape, !shape return specified value.</p><p>Example:
+</p><pre><code class="lisp">(setq a (!randn `(10 10 10)))
+(!shape a) ; =&gt; (10 10 10)
+(!shape a 0) ;=&gt; 10
+</code></pre></div></div>
+</p>
+<h1 id="!dims">!dims</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!dims</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Returns the total length of a given tensor's dims</p><p>Example:
+</p><pre><code class="lisp">(!dims (!zeros '(10 10 10))) ; =&gt; 3
+</code></pre></div></div>
+</p>
+<h1 id="!size">!size</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!size</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Returns the total size of a tensor</p><p>Example:
+</p><pre><code class="lisp">(!size (!zeros '(10 10 10))) ; =&gt; 1000
+</code></pre></div></div>
+</p>
+<h1 id="waffetensor">WaffeTensor</h1><p>
+<div class="codex-doc-node codex-record codex-structure"><code class="codex-name">waffetensor</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Constructor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(sysconst value &amp;key (backend *default-backend*) (extend nil) (thread-data nil) (path-through-node? nil) (no-jit nil) (breakme? nil) &amp;aux (data (init-waffe-tensor-data value)) (backend (check-backend backend extend)) (grad nil) (thread-data thread-data) (destructive? t) (is-next-destruct? breakme?) (is-sysconst? t) (force-ignore-jit no-jit) (path-through-node? path-through-node?) (is-mat (typep value (quote mat))) (grad-tmp (make-grad-tmp)))</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Predicate:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">waffetensor-p</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Copier:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">copy-waffetensor</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Print Function:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(lambda (tensor stream depth) (declare (ignore depth)) (format stream (render-tensor tensor)))</code></td></tr></table></div><div class="codex-docstring"><p>An structure of Waffe's Tensor.
+This structure have:
+</p><ol><li>data (type of WaffeTensorContentType)</li><li>the computation node for backprops, and grads</li><li>backend informations and parameters for optimizing.</li></ol><p>There's three ways to make it.
+</p><dl><dt>(const value)</dt><dd>Constant tensor, grad won't be created.</dd><dt>(tensor value)</dt><dd>Parameter tensor, grad will be created.</dd><dt>(sysconst value)</dt><dd>Constant tensor where tensor sometime cached. Users don't have to use this.</dd></dl><p>Value is following:
+</p><ol><li>simple-array</li><li>mgl-mat:mat (recommended)</li><li>fixnum</li><li>float</li><li>null</li><li>cons</li><li>function (for lazy evaluation)</li><li>ratio (when make, coerced to float)</li></ol><p>This structure is printable and printed nicely.</p></div><ul class="codex-slot-list"><li class="codex-slot codex-structure-slot"><code class="codex-name">data</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensortypes</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-data</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">grad-tmp</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::grad-tmp</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-grad-tmp</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(cl-waffe::make-grad-tmp)</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">backward</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-backward</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">backend</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">keyword</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-backend</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">:mgl</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">grad</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensortypes</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-grad</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">variables</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">list</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-variables</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">state</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">t</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-state</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">is-mat</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-is-mat</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">is-param?</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-is-param?</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">is-ancestor-param</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-is-ancestor-param</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">is-next-destruct?</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe:waffetensor-is-next-destruct?</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">destructive?</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe:waffetensor-destructive?</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">thread-data</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(or cl-waffe::waffenodethread null)</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe:waffetensor-thread-data</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">is-sysconst?</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-is-sysconst?</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">path-through-node?</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-path-through-node?</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">tensor-ident</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(or null symbol)</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-tensor-ident</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">force-ignore-jit</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-force-ignore-jit</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">key</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(or null cons)</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-key</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">idx</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">(or null symbol)</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe::waffetensor-idx</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li><li class="codex-slot codex-structure-slot"><code class="codex-name">is-data-destructed?</code><div class="codex-class-struct-slot-option-node"><table class="codex-class-struct-slot-option-table"><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-header-cell">Option</td><td class="codex-class-struct-slot-option-header-cell">Value</td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Type:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">boolean</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Read Only:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Accessor:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">cl-waffe:waffetensor-is-data-destructed?</code></td></tr><tr class="codex-class-struct-slot-option-row"><td class="codex-class-struct-slot-option-label-cell">Initform:</td><td class="codex-class-struct-slot-option-value-cell codex-class-struct-slot-option-symbol-list-cell"><code class="codex-class-struct-slot-symbol-list">nil</code></td></tr></table></div></li></ul></div>
+</p>
+<h1 id="parameter">parameter</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">parameter</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Redefining new-tensor where old-tensor is const or tensor.</p><p>The new-tensor can made grads.</p><p>Excepted usage is like:
+</p><pre><code class="lisp">(setq my-param (parameter (!mul 0.01 (!randn `(10 10)))))
+</code></pre><p>Note that: tensor's computation node that old-tensor has, will be lost. Only tensor's data and backend will be extended.</p><dl><dt>Input</dt><dd>Tensor (as usual, defined by (const)(sysconst)(tensor))
+</dd><dt>Output</dt><dd>Tensor (as usual, defined by (tensor))
+</dd></dl></div></div>
+</p>
+<h1 id="data">data</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">data</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Access tensor's data. This won't be copied.</p><p>When tensor's data is lazy evaluted, this function behave following:
+</p><ol><li>When tensor is transposed and lazy evaluted, directly returns function object for speed.</li><li> When tensor is cached and lazy evaluted, returns mat object.</li></ol><dl><dt>Input</dt><dd>WaffeTensor</dd><dt>Output</dt><dd>mgl-mat:mat, or waffetensorcontentdata</dd></dl><p>when (data tensor) is a function and is:</p><dl><dt>cached mat</dt><dd>Return mgl-mat, this do not make copy</dd><dt>lazy-evaluation or transposed</dt><dd>Return function itself</dd></dl><p>Note: this function is setfable and inlined</p></div></div>
+</p>
+<h1 id="value">value</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">value</code><code class="codex-lambda-list">(tensor &amp;key (ignore-transpose nil))</code><div class="codex-docstring"><p>Access tensor's data, but if tensor is lazy-evaluated, eval them.</p><p>Note: this is not setfable</p></div></div>
+</p>
+<h1 id="backward">backward</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">backward</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Compute back propagation by traversing the Tensor's computation node.</p><p>The parameters of the model defined by (tensor) or to which (Parameter tensor) is applied, store the gradient in grad slot.</p><p>Note that: tensor must be the shape of `(1) or single value. Otherwise an error occurs.</p><p>In the process calculating backward, new backwards won't be created. (*no-grad* automatically becomes t)</p><dl><dt>Input</dt><dd>WaffeTensor</dd><dt>Output</dt><dd>NIL</dd></dl></div></div>
+</p>
+<h1 id="with-no-grad">with-no-grad</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-no-grad</code><code class="codex-lambda-list">(&amp;body body)</code><div class="codex-docstring">Below this macro, the parameter *no-grad* become t, which means: some operations are forcibly ignored. (e.g.: save-for-backward, building computation nodes)
+<pre><code class="lisp">(with-no-grad
+  (call (model) x))
+</code></pre></div></div>
+</p>
+<h1 id="*no-grad*">*no-grad*</h1><p>
+<div class="codex-doc-node codex-variable"><code class="codex-name">*no-grad*</code><div class="codex-docstring">When t, some node will be ignored. see references below for details. default: nil</div></div>
+</p>
+<h1 id="!add">!add</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!add</code><code class="codex-lambda-list">(x y)</code><div class="codex-docstring"><p>Adds x and y.</p><p>In the case when x or y is not a tensor, automatically creates a new tensor.</p><p>Destructive mode: (!!add x y)</p><p>It supports:</p><ol><li>Broadcasting shapes</li><li>JIT</li></ol><h2 id="examples">Examples</h2>
+<pre><code class="lisp">(setq a (!randn `(3 3)))
+(setq b (!randn `(3 3)))
+(setq c (!randn `(3 1)))
+
+(!add 1 1)
+;=&gt; Const(2)
+
+(!add (const 1)(const 1))
+;=&gt; Const(2)
+
+(!add a b)
+;#Const(((3.418... 1.974... 0.177...)
+;                 ...
+;        (-1.30... 0.987... 1.917...)) :mgl t :shape (3 3))
+
+(!add a c)
+;#Const(((1.426... 2.129... 1.050...)
+;                 ...
+;        (-0.64... 0.269... 0.303...)) :mgl t :shape (3 3))
+
+</code></pre>
+</div></div>
+</p>
+<h1 id="!!add">!!add</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!!add</code><code class="codex-lambda-list">(target-x y)</code><div class="codex-docstring"><p>Adds target-x and y in a destructive way.</p><p>target-x is always substituted for the result</p><p>y is not subject to side effects unless target-x is not a mat.</p><p>See also: <a href="./using-tensor.html#compute-tensors-in-a-destructive-way">Destructive Operations</a></p></div></div>
+</p>
+<h1 id="!sub">!sub</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!sub</code><code class="codex-lambda-list">(x y)</code><div class="codex-docstring"><p>Subtract x by y.</p><p>In the case when x or y is not a tensor, automatically creates a new tensor.</p><p>It supports:</p><ol><li>Broadcasting shapes</li><li>JIT</li></ol><h2 id="2-examples">Examples</h2>
+<pre><code class="lisp">(setq a (!randn `(3 3)))
+(setq b (!randn `(3 3)))
+(setq c (!randn `(3 1)))
+
+(!sub 1 1)
+;=&gt; Const(0)
+
+(!sub (const 1)(const 1))
+;=&gt; Const(0)
+
+(!sub a b)
+;#Const(((-0.86... 1.413... 1.139...)
+;                 ...
+;        (0.017... -0.44... -1.31...)) :mgl t :shape (3 3))
+
+(!sub a c)
+;#Const(((1.128... 1.258... 0.267...)
+;                 ...
+;        (-0.64... 0.269... 0.303...)) :mgl t :shape (3 3))
+
+</code></pre>
+<p>
+</p></div></div>
+</p>
+<h1 id="!!sub">!!sub</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!!sub</code><code class="codex-lambda-list">(target-x y)</code><div class="codex-docstring"><p>Substracts target-x by y in a destructive way.</p><p>target-x is always substituted for the result.</p><p>y is not subject to side effects unless target-x is not a mat.</p><p>See also: <a href="./using-tensor.html#compute-tensors-in-a-destructive-way">Destructive Operations</a></p></div></div>
+</p>
+<h1 id="!mul">!mul</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!mul</code><code class="codex-lambda-list">(x y)</code><div class="codex-docstring"><p>Multiply x and y with element-wise.</p><p>In the case when x or y is not a tensor, automatically creates a new tensor.</p><p>It supports:</p><ol><li>Broadcasting shapes</li><li>JIT</li></ol><h2 id="3-examples">Examples</h2>
+<pre><code class="lisp">(setq a (!randn `(3 3)))
+(setq b (!randn `(3 3)))
+(setq c (!randn `(3 1)))
+
+(!mul 1 1)
+;=&gt; Const(1)
+
+(!mul (const 1)(const 1))
+;=&gt; Const(1)
+
+(!mul a b)
+;#Const(((2.734... 0.475... -0.31...)        
+;                 ...
+;        (0.426... 0.193... 0.490...)) :mgl t :shape (3 3))
+
+(!mul a c)
+;#Const(((2.734... 0.475... -0.31...)        
+;                 ...
+;        (0.426... 0.193... 0.490...)) :mgl t :shape (3 3))
+
+</code></pre>
+<p>
+</p></div></div>
+</p>
+<h1 id="!!mul">!!mul</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!!mul</code><code class="codex-lambda-list">(target-x y)</code><div class="codex-docstring"><p>Multiplys target-x and y in a destructive way.</p><p>target-x is always substituted for the result</p><p>y is not subject to side effects unless target-x is not a mat.</p><p>See also: <a href="./using-tensor.html#compute-tensors-in-a-destructive-way">Destructive Operations</a></p></div></div>
+</p>
+<h1 id="!div">!div</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!div</code><code class="codex-lambda-list">(x y)</code><div class="codex-docstring"><p>Divides x by y.</p><p>In the case when x or y is not a tensor, automatically creates a new tensor.</p><p>It supports:</p><ol><li>Broadcasting shapes</li><li>JIT</li></ol><h2 id="4-examples">Examples</h2>
+<pre><code class="lisp">(setq a (!randn `(3 3)))
+(setq b (!ones `(3 3)))
+(setq c (!ones `(3 1)))
+
+(!div 2 1)
+;=&gt; Const(2)
+
+(!div (const 2)(const 1))
+;=&gt; Const(2)
+
+(!div a b)
+;#Const(((1.734... 0.475... -0.31...)        
+;                 ...
+;        (0.426... 0.193... 0.490...)) :mgl t :shape (3 3))
+
+(!div a c)
+;#Const(((2.734... 0.475... -0.31...)        
+;                 ...
+;        (0.426... 0.193... 0.490...)) :mgl t :shape (3 3))
+
+</code></pre>
+<p>
+</p></div></div>
+</p>
+<h1 id="!sum">!sum</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!sum</code><code class="codex-lambda-list">(x &amp;optional (axis nil) (keepdims nil))</code><div class="codex-docstring"><p>Sum up x where x is a cl-waffe tensor.</p><p>For nd tensors...
+</p><dl><dt>1D</dt><dd>unsqueeze x with 1, and call !sum again.</dd><dt>2D and more.</dt><dd>Sum up all elements of X</dd></dl><h2 id="arguments">arguments</h2><dl><dt>axis</dt><dd>a dimension to reduce</dd><dt>keepdims</dt><dd>When t, the returning tensor is repeated with <code class="codex-param">axis</code></dd></dl><p>
+</p><h2 id="example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(10)))
+(!sum a)
+;=&gt;#Const(4.74653)
+
+(setq a (!randn `(10 10)))
+(!sum a)
+;=&gt;#Const(1.5428619)
+
+(!sum a 0)
+;=&gt;#Const(((-2.07... 0.463... ~ 1.778... 1.695...)) :mgl t :shape (1 10))
+
+(!sum a 1)
+;#Const(((0.967...)        
+;                 ...
+;        (2.774...)) :mgl t :shape (10 1))
+
+(!sum a 0 t)
+;#Const(((-2.07... 0.463... ~ 1.778... 1.695...)        
+;                 ...
+;        (-2.07... 0.463... ~ 1.778... 1.695...)) :mgl t :shape (10 10))
+</code></pre>
+<p>
+</p></div></div>
+</p>
+<h1 id="!mean">!mean</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!mean</code><code class="codex-lambda-list">(x &amp;optional (axis nil) (keepdims nil))</code><div class="codex-docstring">The usage is the same as !sum.<h2 id="5-example">Example</h2>
+<pre><code class="lisp">(setq a (!ones '(10 10)))
+;#Const(((1.0 1.0 ~ 1.0 1.0)        
+;                 ...
+;        (1.0 1.0 ~ 1.0 1.0)) :mgl t :shape (10 10))
+(!mean a)
+;=&gt;Const(1.0)
+</code></pre>
+</div></div>
+</p>
+<h1 id="!dot">!dot</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!dot</code><code class="codex-lambda-list">(x y)</code><div class="codex-docstring"><p>Computes the dot product of x and y where x and y are 1d Tensor.</p><p>🗒Note: Unlike Numpy's dot, !dot only supports for 1d tensors with the same number of elements and the tensor of which dims is larger than 1, regarded as 1d tensors.</p><h2 id="6-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(10)))
+(setq b (!randn `(10)))
+
+(!dot a b)
+;=&gt; #Const(1.0842022e-19)
+</code></pre>
+<p>
+</p></div></div>
+</p>
+<h1 id="!matmul">!matmul</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!matmul</code><code class="codex-lambda-list">(x y)</code><div class="codex-docstring"><p>Multiplying matrices <code class="codex-param">x</code> and <code class="codex-param">y</code>.</p><p>!matmul has many behaviours depends on the dimensionality of the tensors as follows:</p><dl><dt>x and y are 1D</dt><dd>The dot-product is returned.
+<pre><code class="lisp">(setq a (!randn `(10)))
+(setq b (!randn `(10)))
+(!matmul a b)
+;=&gt;#Const(-2.0)
+</code></pre>
+</dd><dt>x and y are both 2D</dt><dd>The matrix-matrix product is returned.
+<pre><code class="lisp">(setq a (!randn `(3 10)))
+(setq b (!randn `(10 3)))
+(!matmul a b)
+;#Const(((2.309... 2.223... 3.630...)        
+;                 ...
+;        (2.334... 2.850... 3.678...)) :mgl t :shape (3 3))
+</code></pre>
+</dd><dt>x is 2D and y is 3D.</dt><dd>The matrix and y's each matrix are multiplied and is returned.
+<pre><code class="lisp">(setq a (!randn `(3 10)))
+(setq b (!randn `(5 10 3)))
+
+(!matmul a b)
+;(!aref b 0) ~ (!aref b 4) is multiplied with a
+
+;#Const((((3.257... 2.731... 1.670...)         
+;                   ...
+;         (2.523... 2.251... 1.276...))        
+;                 ...
+;        ((2.610... 2.764... 2.415...)         
+;                   ...
+;         (2.080... 2.204... 1.751...))) :mgl t :shape (5 3 3))
+</code></pre>
+</dd><dt>x is 3D and y is 2D.</dt><dd>The matrix and x's each matrix are multiplied and is returned.
+<pre><code class="lisp">(setq a (!randn `(5 3 10)))
+(setq b (!randn `(10 3)))
+
+(!matmul a b)
+;(!aref a 0) ~ (!aref a 4) is multiplied with b
+;#Const((((2.309... 2.204... 1.556...)         
+;                   ...
+;         (3.746... 3.869... 3.091...))        
+;                 ...
+;        ((3.260... 3.200... 2.847...)         
+;                   ...
+;         (3.008... 2.186... 2.376...))) :mgl t :shape (5 3 3))
+</code></pre>
+</dd><dt>x is 3D and y is 3D.</dt><dd>The Batch Filtered Matrix-Matrix product is returned.
+<pre><code class="lisp">(setq a (!randn `(5 3 10)))
+(setq b (!randn `(5 10 3)))
+
+; The returned mat is comprised of:
+; (!matmul (!aref a 0)(!aref b 0))
+; (!matmul (!aref a 1)(!aref b 1))
+; (!matmul (!aref a 2)(!aref b 2))
+; (!matmul (!aref a 3)(!aref b 3))
+
+(!matmul a b)
+;#Const((((6.621... -5.61... 2.898...)         
+;                   ...
+;         (-2.96... -4.26... -3.99...))        
+;                 ...
+;        ((-0.02... 2.707... 5.989...)         
+;                   ...
+;         (-3.35... 3.561... -3.90...))) :mgl t :shape (5 3 3))
+</code></pre>
+</dd><dt>Otherwise</dt><dd>Currently not implemented. In the near future for more will be added.</dd></dl></div></div>
+</p>
+<h1 id="!sin">!sin</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!sin</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying sin to each element of x, creating a new sysconst.<h2 id="7-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(5)))
+;=&gt;#Const((0.638... 0.527... 0.515... 0.495... 0.912...) :mgl t :shape (5))
+(!sin a)
+;=&gt;#Const((-0.44... -0.64... -0.66... -0.70... -0.09...) :mgl t :shape (5))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!cos">!cos</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!cos</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying cos to each element of x, creating a new sysconst.<h2 id="8-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(5)))
+;=&gt;#Const((0.638... 0.527... 0.515... 0.495... 0.912...) :mgl t :shape (5))
+(!cos a)
+;=&gt;#Const((0.803... 0.864... 0.870... 0.879... 0.611...) :mgl t :shape (5))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!tan">!tan</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!tan</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying tan to each element of x, creating a new sysconst.<h2 id="9-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(5)))
+;=&gt;#Const((0.638... 0.527... 0.515... 0.495... 0.912...) :mgl t :shape (5))
+(!tan a)
+;=&gt;#Const((0.741... 0.582... 0.566... 0.540... 1.293...) :mgl t :shape (5))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!asin">!asin</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!asin</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying asin to each element</div></div>
+</p>
+<h1 id="!acos">!acos</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!acos</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying acos to each element</div></div>
+</p>
+<h1 id="!atan">!atan</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!atan</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying atan to each element</div></div>
+</p>
+<h1 id="!sinh">!sinh</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!sinh</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying sinh to each element of x, creating a new sysconst.<h2 id="10-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(5)))
+;=&gt;#Const((0.638... 0.527... 0.515... 0.495... 0.912...) :mgl t :shape (5))
+(!sinh a)
+;=&gt;#Const((0.682... 0.551... 0.538... 0.516... 1.044...) :mgl t :shape (5))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!cosh">!cosh</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!cosh</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying cosh to each element of x, creating a new sysconst.<h2 id="11-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(5)))
+;=&gt;#Const((0.638... 0.527... 0.515... 0.495... 0.912...) :mgl t :shape (5))
+(!cosh a)
+;=&gt;#Const((1.210... 1.142... 1.135... 1.125... 1.446...) :mgl t :shape (5))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!tanh">!tanh</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!tanh</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying tanh to x, return a new sysconst with making nodes.</div></div>
+</p>
+<h1 id="!asinh">!asinh</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!asinh</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying asinh to each element</div></div>
+</p>
+<h1 id="!acosh">!acosh</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!acosh</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying acosh to each element</div></div>
+</p>
+<h1 id="!atanh">!atanh</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!atanh</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying atanh to each element</div></div>
+</p>
+<h1 id="!abs">!abs</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!abs</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring"><p>Computes the absolute value of each element in <code class="codex-param">x</code>.</p><p>Example:
+</p><pre><code class="lisp">(setq a (!random `(10 10) '(-1.0 1.0)))
+;#Const(((0.048... 0.805... ~ 0.769... 0.252...)        
+;                 ...
+;        (0.159... -0.66... ~ -0.55... -0.23...)) :mgl t :shape (10 10))
+(!abs a)
+;#Const(((0.048... 0.805... ~ 0.769... 0.252...)        
+;                 ...
+;        (0.159... 0.667... ~ 0.553... 0.239...)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!log">!log</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!log</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring"><p>Returns a new tensor with the natural logarithm of the elements of input.</p><p>yi = log(e xi)</p><h2 id="12-example">Example</h2>
+<pre><code class="lisp">(setq a (!ones '(10 10)))
+(!log a)
+;#Const(((0.0 0.0 ~ 0.0 0.0)        
+;                 ...
+;        (0.0 0.0 ~ 0.0 0.0)) :mgl t :shape (10 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!exp">!exp</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!exp</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Applying exp to each element of x, creating a new sysconst.<h2 id="13-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(10 10)))
+;#Const(((0.624... 0.807... ~ 0.500... 0.937...)        
+;                 ...
+;        (0.662... 0.299... ~ 0.761... 0.729...)) :mgl t :shape (10 10))
+(!exp a)
+;#Const(((1.866... 2.242... ~ 1.650... 2.553...)        
+;                 ...
+;        (1.939... 1.349... ~ 2.140... 2.073...)) :mgl t :shape (10 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!pow">!pow</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!pow</code><code class="codex-lambda-list">(x n)</code><div class="codex-docstring">Takes the power of each element in <code class="codex-param">x</code> with n, returning a new sysconst.<h2 id="14-example">Example</h2>
+<pre><code class="lisp">(setq a (!ones `(10 10)))
+(!pow a 3)
+;#Const(((1.0 1.0 ~ 1.0 1.0)        
+;                 ...
+;        (1.0 1.0 ~ 1.0 1.0)) :mgl t :shape (10 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!sqrt">!sqrt</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!sqrt</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring">Takes the power of each element in <code class="codex-param">x</code> with 1/2, creating new sysconst and nodes.<h2 id="15-example">Example</h2>
+<pre><code class="lisp">(setq a (!ones `(10 10)))
+(!sqrt a 3)
+;#Const(((1.0 1.0 ~ 1.0 1.0)
+;                 ...
+;        (1.0 1.0 ~ 1.0 1.0)) :mgl t :shape (10 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!argmax">!argmax</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!argmax</code><code class="codex-lambda-list">(tensor &amp;key (dim -1) (keepdims nil) (max nil))</code><div class="codex-docstring"><p>Returns the indices of the maximum value of all elements in the input tensor.</p><p>If max=t, retures the maximun value of dim.</p><dl><dt>dim</dt><dd>The dimension to reduce. If nil, the argmax of the flattened input is returned.</dd><dt>keepdims</dt><dd>whether the output tensor has dim retained or not. Ignored if dim=-1</dd></dl><h2 id="16-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(5)))
+;#Const((0.933... 0.158... 0.822... 0.881... 0.831...) :mgl t :shape (5))
+(!argmax a)
+;#Const((0.0) :mgl t :shape (1))
+(setq a (!randn `(10 10 10)))
+;#Const((((0.393... 0.658... ~ 0.003... 0.609...)         
+;                   ...
+;         (0.394... 0.252... ~ 0.688... 0.057...))        
+;                 ...
+;        ((0.325... 0.794... ~ 0.540... 0.381...)         
+;                   ...
+;         (0.310... 0.035... ~ 0.280... 0.431...))) :mgl t :shape (10 10 10))
+
+(!argmax a :dim 2)
+
+;#Const(((5.0 9.0 ~ 0.0 4.0)        
+;                 ...
+;        (2.0 0.0 ~ 2.0 5.0)) :mgl t :shape (10 10))
+
+(!argmax a :dim 2 :keepdims t)
+;#Const((((5.0 5.0 ~ 5.0 5.0)         
+;                   ...
+;         (4.0 4.0 ~ 4.0 4.0))        
+;                 ...
+;        ((2.0 2.0 ~ 2.0 2.0)         
+;                   ...
+;         (5.0 5.0 ~ 5.0 5.0))) :mgl t :shape (10 10 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!argmin">!argmin</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!argmin</code><code class="codex-lambda-list">(tensor &amp;key (dim -1) (keepdims nil) (min nil))</code><div class="codex-docstring"><p>Returns the indices of the minimum value of all elements in the input tensor.</p><p>If min=t, argmin returns the minimum value of dim.</p><dl><dt>dim</dt><dd>The dimension to reduce. If nil, the argmax of the flattened input is returned.</dd><dt>keepdims</dt><dd>whether the output tensor has dim retained or not. Ignored if dim=-1.</dd></dl><h2 id="17-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(5)))
+;=&gt;#Const((0.635... 0.101... 0.864... 0.563... 0.481...) :mgl t :shape (5))
+(!argmin a)
+;=&gt;#Const((1.0) :mgl t :shape (1))
+
+(setq a (!randn `(10 10 10)))
+;#Const((((0.267... 0.113... ~ 0.142... 0.208...)         
+;                   ...
+;         (0.174... 0.948... ~ 0.232... 0.462...))        
+;                 ...
+;        ((0.454... 0.361... ~ 0.605... 0.731...)         
+;                   ...
+;         (0.099... 0.816... ~ 0.729... 0.996...))) :mgl t :shape (10 10 10))
+
+(!argmin a)
+;#Const((415.0...) :mgl t :shape (1))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!squeeze">!squeeze</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!squeeze</code><code class="codex-lambda-list">(x &amp;optional (dim nil))</code><div class="codex-docstring"><p>Returns a new tensor with a dimension of size one removed at the specified position.</p><p>When dim=nil or -1, the last position of dim will be removed.</p><p>If the specified position of a tensor isn't one, !squeeze is skipped.</p><h2 id="18-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(10 1 10)))
+;#Const((((0.928... 0.556... ~ 0.697... 0.973...))        
+;                 ...
+;        ((0.368... 0.995... ~ 0.589... 0.716...))) :mgl t :shape (10 1 10))
+
+(!squeeze a 1)
+;#Const(((0.928... 0.556... ~ 0.697... 0.973...)        
+;                 ...
+;        (0.368... 0.995... ~ 0.589... 0.716...)) :mgl t :shape (10 10))
+
+(!squeeze a -1)
+;#Const((((0.928... 0.556... ~ 0.697... 0.973...))        
+;                 ...
+;        ((0.368... 0.995... ~ 0.589... 0.716...))) :mgl t :shape (10 1 10))
+
+(setq a (!randn `(10 10 1)))
+;#Const(((0.991... 0.248... ~ 0.610... 0.289...)        
+;                 ...
+;        (0.593... 0.177... ~ 0.374... 0.668...)) :mgl t :shape (10 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!unsqueeze">!unsqueeze</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!unsqueeze</code><code class="codex-lambda-list">(x &amp;optional (dim 0) (count 1))</code><div class="codex-docstring"><p>Returns a new tensor with a dimension of size one inserted at the specified position.</p><p>dim indicates the position, when dim=-1, it indicates a last dimension of <code class="codex-param">x</code>.</p><h2 id="19-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(10 10)))
+;#Const(((0.685... 0.827... ~ 0.076... 0.102...)        
+;                 ...
+;        (0.802... 0.571... ~ 0.207... 0.283...)) :mgl t :shape (10 10))
+(!unsqueeze a)
+;#Const((((0.685... 0.827... ~ 0.076... 0.102...)         
+;                   ...
+;         (0.802... 0.571... ~ 0.207... 0.283...))) :mgl t :shape (1 10 10))
+
+(!unsqueeze a -1)
+;#Const((((0.685...)         
+;                   ...
+;         (0.102...))        
+;                 ...
+;        ((0.802...)         
+;                   ...
+;         (0.283...))) :mgl t :shape (10 10 1))
+
+(!unsqueeze a 2)
+;#Const(((0.685... 0.827... ~ 0.076... 0.102...)        
+;                 ...
+;        (0.802... 0.571... ~ 0.207... 0.283...)) :mgl t :shape (10 10 1 1))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!reshape">!reshape</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!reshape</code><code class="codex-lambda-list">(x dim)</code><div class="codex-docstring"><p>Return a new sysconst with changing its shape. x won't be modified.</p><p>If dims has the element of <code class="codex-param">t</code>, t is automatically inferred from the remaining dimensions and the number of elements in dim. (count t dim) must be 1 (Todo: Fix).</p><p>The total size of tensor must not be changed before or after the call to reshape.</p><p>See also: nil</p><h2 id="20-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(10 10 10)))
+(!reshape a '(1 10 100))
+;#Const((((0.454... 0.277... ~ 0.536... 0.135...)         
+;                   ...
+;         (0.857... 0.714... ~ 0.169... 0.279...))) :mgl t :shape (1 10 100))
+
+(!reshape a '(1 1 t))
+;#Const((((0.454... 0.277... ~ 0.169... 0.279...))) :mgl t :shape (1 1 1000))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!repeats">!repeats</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!repeats</code><code class="codex-lambda-list">(x axis repeats)</code><div class="codex-docstring"><p>Repeats <code class="codex-param">x</code> along specified <code class="codex-param">axis</code> by <code class="codex-param">repeats</code>, creating new sysconst.</p><p>x can be: mat or tensor.</p><h2 id="21-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn '(1 3 3)))
+;#Const((((0.333... 0.914... 0.260...)         
+;                   ...
+;         (0.611... 0.110... 0.113...))) :mgl t :shape (1 3 3))
+(!repeats a 0 3)
+;#Const((((0.333... 0.914... 0.260...)         
+;                   ...
+;         (0.611... 0.110... 0.113...))
+;                 ...
+;        ((0.333... 0.914... 0.260...)         
+;                   ...
+;         (0.611... 0.110... 0.113...))) :mgl t :shape (3 3 3))
+
+(!repeats (const 10.0) 3 10)
+;#Const(((((10.0 10.0 ~ 10.0 10.0)))) :mgl t :shape (1 1 1 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!flatten">!flatten</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!flatten</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Flattens input by reshaping it into a one-dimensional tensor.</p><p>The operation is the same as <code>(!reshape tensor '(t))</code></p><p>Example:
+</p><pre><code class="lisp">(setq a (!randn `(10 10)))
+;#Const(((0.688... 0.580... ~ 0.013... 0.461...)        
+;                 ...
+;        (0.214... 0.248... ~ 0.540... 0.416...)) :mgl t :shape (10 10))
+
+(!flatten a)
+;#Const((0.688... 0.580... ~ 0.540... 0.416...) :mgl t :shape (100))
+</code></pre></div></div>
+</p>
+<h1 id="!transpose">!transpose</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!transpose</code><code class="codex-lambda-list">(x &amp;optional result)</code><div class="codex-docstring"><p>Transpose x where x is a 2d tensor.</p><p>Transposed x is lazy evaluated until called by !matmul.</p><p>Todo: implement 3d, 4d version...</p><h2 id="22-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(3 5)))
+(setq a (!transpose a))
+;#Const(#&lt;FUNCTION (LABELS CL-WAFFE.BACKENDS.MGL::LAZYTRANSPOSE :IN CL-WAFFE.BACKENDS.MGL::LAZY-EVAL-TRANSPOSE) {10038CBADB}&gt;)
+
+(!matmul a (!randn '(3 5)))
+;#Const(((0.653... 0.400... 0.471... 0.705... 0.623...)        
+;                 ...
+;        (1.220... 0.760... 0.975... 1.360... 1.029...)) :mgl t :shape (5 5))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!transpose1">!transpose1</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!transpose1</code><code class="codex-lambda-list">(x &amp;rest result)</code><div class="codex-docstring"><p>Transpose x but doesn't produce lazy-eval.</p><p>Todo: Numcl's operation couldm't optimized well. i need to reimplement it by myself.</p><h2 id="23-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(10 5 3)))
+
+(!transpose1 a)
+;#Const((((-0.47... -0.03... ~ -0.17... 0.328...)         
+;                   ...
+;         (0.210... -1.80... ~ 1.648... 0.135...))        
+;                 ...
+;        ((-0.52... 1.509... ~ 0.643... 0.258...)         
+;                   ...
+;         (-0.26... -1.14... ~ -1.08... 1.126...))) :mgl t :shape (3 5 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!concatenate">!concatenate</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!concatenate</code><code class="codex-lambda-list">(axis &amp;rest tensors)</code><div class="codex-docstring">Concatenates the given sequence of <code class="codex-param">tensors</code> in the given <code class="codex-param">axis</code>. All tensors must have the same shape.<h2 id="24-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(3 3 3)))
+;#Const((((1.000... -0.00... -0.25...)         
+;                   ...
+;         (1.473... -0.44... 1.680...))        
+;                 ...
+;        ((0.569... 0.852... 0.405...)         
+;                   ...
+;         (0.024... 0.756... 0.383...))) :mgl t :shape (3 3 3))
+
+(!concatenate 0 a a a)
+;#Const((((1.000... -0.00... -0.25...)         
+;                   ...
+;         (1.473... -0.44... 1.680...))        
+;                 ...
+;        ((0.569... 0.852... 0.405...)         
+;                   ...
+;         (0.024... 0.756... 0.383...))) :mgl t :shape (9 3 3))
+
+(mgl-mat:M= (data (!aref * '(0 3)))
+            (data (!aref * '(3 6))))
+;T
+</code></pre>
+</div></div>
+</p>
+<h1 id="!stack">!stack</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!stack</code><code class="codex-lambda-list">(axis &amp;rest tensors)</code><div class="codex-docstring"><p>Stacks the given <code class="codex-param">tensors</code> in the specified <code class="codex-param">axis</code>.</p><p>Internally, !stack <b>adds 1 to the specified axis</b> before calling !concatenate.</p><p>Note: Currently, when unsqueezing given tensors, !stack creates copies every time in order to prevent side effects. To avoid this, !concatenate is recommended to use. <b>(TO FIX)</b></p><h2 id="25-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(2 2 2)))
+
+;#Const((((-0.83... -1.74...)
+;         (0.119... 0.162...))
+;        ((-1.81... 0.907...)
+;         (-0.50... -0.96...))) :mgl t :shape (2 2 2))
+
+(!stack 0 a a a)
+;#Const(((((-0.83... -1.74...)
+;          (0.119... 0.162...))
+;         ((-1.81... 0.907...)
+;          (-0.50... -0.96...)))        
+;                 ...
+;        (((-0.83... -1.74...)
+;          (0.119... 0.162...))
+;         ((-1.81... 0.907...)
+;          (-0.50... -0.96...)))) :mgl t :shape (3 2 2 2))
+
+(mgl-mat:M= (data (!aref * 0))(data (!aref * 1)))
+; T
+</code></pre>
+</div></div>
+</p>
+<h1 id="!split">!split</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!split</code><code class="codex-lambda-list">(tensor split-size &amp;key (axis 0))</code><div class="codex-docstring"><p>Splits the tensor into chunks in the specified <code class="codex-param">axis</code>. Each chunk is a copy of original tensor.</p><p>split-size indicates the strides of each chunk, that is, <code class="codex-param">tensor</code> will be split into equalliy size of <code class="codex-param">split-size</code>.</p><p>split-size must be fixnum.rr</p><p>Alternatively, !aref, (setf !aref) is available.</p><h2 id="26-example">Example</h2>
+<pre><code class="lisp">(setq a (!randn `(4 2 2)))
+;#Const((((-0.48... -1.22...)
+;         (0.251... 0.476...))        
+;                 ...
+;        ((-0.66... 1.045...)
+;         (-0.44... 1.592...))) :mgl t :shape (4 2 2))
+
+(!split a 2)
+;(#Const((((-0.48... -1.22...)
+;         (0.251... 0.476...))
+;        ((0.864... -0.93...)
+;         (-0.43... 0.346...))) :mgl t :shape (2 2 2))
+; #Const((((-1.91... -0.63...)
+;         (-0.08... 0.867...))
+;        ((-0.66... 1.045...)
+;         (-0.44... 1.592...))) :mgl t :shape (2 2 2)))
+
+; the rests are filled with 0.0
+(!split a 3)
+;(#Const((((-0.48... -1.22...)
+;         (0.251... 0.476...))        
+;                 ...
+;        ((-1.91... -0.63...)
+;         (-0.08... 0.867...))) :mgl t :shape (3 2 2))
+; #Const((((-0.66... 1.045...)
+;         (-0.44... 1.592...))        
+;                 ...
+;        ((0.0 0.0)
+;         (0.0 0.0))) :mgl t :shape (3 2 2)))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!hstack">!hstack</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">!hstack</code><code class="codex-lambda-list">(&amp;rest tensors)</code><div class="codex-docstring">!vstack is the equivalent to !concatenate(axis=1)</div></div>
+</p>
+<h1 id="!vstack">!vstack</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">!vstack</code><code class="codex-lambda-list">(&amp;rest tensors)</code><div class="codex-docstring">!vstack is the equivalent to !concatenate(axis=0)</div></div>
+</p>
+<h1 id="!aref">!aref</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!aref</code><code class="codex-lambda-list">(tensor &amp;rest dims)</code><div class="codex-docstring"><p>!aref creates a new tensor from the area specified by <code class="codex-param">dims</code> from the given <code class="codex-param">tensor</code>.</p><p>This function is setfable and both function produces the computation nodes.</p><p>
+dims is consisted of list, and each dimension is described as follow formats:</p><dl><dt>t</dt><dd>t means (0~max-len) in the dimension.</dd><dt>fixnum</dt><dd>copies the index of fixnum in the dimension.</dd><dt>list</dt><dd>list must be of (start stop), copying tensors from start to stop in the dimension. that is, the result in the dimension is the copy of: <b>start&lt;=x&lt;stop</b>.
+Using t as <code class="codex-param">stop</code> means: t is the last element in the dimension.</dd></dl><p>The fixnum used in <code class="codex-param">dims</code> is not only positive numbers but also negative numbers.</p><p>For example, -1 is interpreted as (+ maxlen -1), -2 is interpreted as (+ maxlen -2)...</p><p>Note: (setf !aref) overwrites the given tensor's mat but won't overwrites its computation node. in order to update nodes, you must write it like: (setq a (setf (!aref a ...) ...))... See Example for the details.</p><p>Tensor cut-outs act on:
+</p><dl><dt>When is not setf</dt><dd>act on the given tensor.</dd><dt>When is setf</dt><dd>act on the target tensor. (e.g.: (setf (!aref target-tensor ...) input-tensor))</dd></dl><p>Example:
+</p><pre><code class="lisp">(setq a (!randn `(10 5 3)))
+;#Const((((0.621... -1.15... 2.396...)         
+;                   ...
+;         (0.157... 0.389... 1.084...))        
+;                 ...
+;        ((1.123... -0.58... -0.28...)         
+;                   ...
+;         (0.506... -0.44... -0.26...))) :mgl t :shape (10 5 3))
+
+(!aref a '(0 3)) ; interpreted as (!aref a '(0 3) t t)
+;#Const((((0.621... -1.15... 2.396...)         
+;                   ...
+;         (0.157... 0.389... 1.084...))        
+;                 ...
+;        ((0.694... 0.954... 1.210...)        
+;                   ...
+;         (0.884... 0.059... 0.190...))) :mgl t :shape (3 5 3))
+
+(!aref a '(1 3))
+;#Const((((0.657... 0.834... -2.01...)         
+;                   ...
+;         (1.194... 0.517... 0.356...))
+;        ((0.694... 0.954... 1.210...)         
+;                   ...
+;         (0.884... 0.059... 0.190...))) :mgl t :shape (2 5 3))
+
+(!aref a '(1 0)) ; When (cdr dims) &lt;= 0, interpreted as (- (!shape tensor dim)(cdr dims))
+; In this Example, this is the same as (!aref a '(1 10))
+;#Const((((0.657... 0.834... -2.01...)         
+;                   ...
+;         (1.194... 0.517... 0.356...))        
+;                 ...
+;        ((1.123... -0.58... -0.28...)         
+;                   ...
+;         (0.506... -0.44... -0.26...))) :mgl t :shape (9 5 3))
+
+(!aref a '(1 -1))
+;#Const((((0.657... 0.834... -2.01...)         
+;                   ...
+;         (1.194... 0.517... 0.356...))        
+;                 ...
+;        ((-2.29... -1.12... -0.68...)         
+;                   ...
+;         (-1.74... 0.489... 1.519...))) :mgl t :shape (8 5 3))
+
+(!aref a t '(0 2))
+;Tensors in lower dimensions can also be clipped.
+;If 0th dim isn't needed to be cut, place t.
+;#Const((((0.621... -1.15... 2.396...)
+;         (0.642... 0.029... 1.334...))        
+;                 ...
+;        ((1.123... -0.58... -0.28...)
+;         (-2.43... -0.29... 0.882...))) :mgl t :shape (10 2 3))
+
+(!aref a '(0 2) '(1 2) '(1 3))
+;#Const((((0.029... 1.334...))
+;        ((-1.41... -0.32...))) :mgl t :shape (2 1 2))
+
+; This function is setfable, but currently I won't come up with the best solution to update computation node.
+; I know it is very ugly but additional setq is required after setf.
+; Also, note that (setf !aref). overwrites a.
+(setq a (setf (!aref a '(0 3) '(0 3))(!zeros '(3 3))))
+
+;#Const((((0.0 0.0 0.0)         
+;                   ...
+;         (0.157... 0.389... 1.084...))
+;                 ...
+;        ((1.123... -0.58... -0.28...)
+;                   ...
+;         (0.506... -0.44... -0.26...))) :mgl t :shape (10 5 3))
+
+(!aref a 0 0)
+;#Const((((0.0 0.0 0.0))) :mgl t :shape (1 1 3))
+</code></pre></div></div>
+</p>
+<h1 id="!where">!where</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!where</code><code class="codex-lambda-list">(condition tensor then else)</code><div class="codex-docstring"><p>Return a tensor of elements selected from either x or y, depending on condition.<code class="codex-param">condition</code> is given as a lambda expression, which called with an value of (aref tensor index).</p><p>!where defined as<code>out = if (condition(tensor[i]), then, else)</code></p><p>Return: A tensor of shape that equal to the condition.</p><h2 id="27-example">Example</h2>
+<pre><code class="lisp">(setq a (!random `(10 10) '(-1.0 1.0)))
+;#Const(((0.042... -0.36... ~ 0.250... 0.967...)        
+;                 ...
+;        (-0.21... 0.962... ~ -0.32... 0.215...)) :mgl t :shape (10 10))
+
+(!where #'(lambda (x)(&gt; x 0)) a 1.0 0.0)
+;#Const(((1.0 0.0 ~ 1.0 1.0)        
+;                 ...
+;        (0.0 1.0 ~ 0.0 1.0)) :mgl t :shape (10 10))
+
+; works as ReLU
+
+(!mul a (!where #'(lambda (x)(&gt; x 0)) a 1.0 0.0))
+;#Const(((0.042... 0.0... ~ 0.250... 0.967...)        
+;                 ...
+;        (0.0... 0.962... ~ 0.0... 0.215...)) :mgl t :shape (10 10))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!index">!index</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!index</code><code class="codex-lambda-list">nil</code><div class="codex-docstring">Todo</div></div>
+</p>
+<h1 id="!filter">!filter</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!filter</code><code class="codex-lambda-list">(tensor lambda)</code><div class="codex-docstring">Applying every tensor's element <code class="codex-param">lambda</code>, it returns an tensor which comprised of the <code class="codex-param">lambda</code>'s returned values.<dl><dt>tensor</dt><dd>an tensor that to be refered to</dd><dt>lambda</dt><dd>an function that returns elements at position <code class="codex-param">x</code></dd></dl>
+<pre><code class="lisp">(setq tensor (!randn `(10 10)))
+(!filter tensor #'(lambda (x)(if (&gt; x 0) x 1.0)))
+;#Const(((0.802... 1.331... ~ 0.998... 1.994...)        
+;                 ...
+;        (1.0 0.005... ~ 0.296... 0.358...)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!arange">!arange</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">!arange</code><code class="codex-lambda-list">(&amp;rest args)</code><div class="codex-docstring"><p>Like numpy's arange, arange can be called with a varying number of positional arguments:</p><h2 id="(-!arange-stop-)">(!arange stop)</h2>
+<pre><code class="lisp">(!arange 10)
+;#Const((0.0 1.0 ~ 8.0 9.0) :mgl t :shape (10))
+</code></pre>
+<h2 id="(-!arange-start-stop-)">(!arange start stop)</h2>
+<pre><code class="lisp">(!arange 3 10)
+;=&gt;#Const((3.0 4.0 ~ 8.0 9.0) :mgl t :shape (7))
+</code></pre>
+<h2 id="(-!arange-start-stop-step-)">(!arange start stop step)</h2>
+<pre><code class="lisp">(!arange 3 10 2)
+;#Const((3.0 5.0 7.0 9.0) :mgl t :shape (4))
+</code></pre>
+</div></div>
+</p>
+<h1 id="!relu">!relu</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!relu</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring"><p>Applying relu to x, return a new sysconst with making nodes.</p><p>Relu(x) = { 0 (x &lt; 0), x (x &gt; 0) }</p><p>Input: x where x is waffe supported data type.</p><p>Output: Tensor</p></div></div>
+</p>
+<h1 id="!sigmoid">!sigmoid</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!sigmoid</code><code class="codex-lambda-list">(x)</code><div class="codex-docstring"><p>Applyong sigmoid to x, return a new sysconst with making nodes.</p><p>Input: x where x is waffe supported data type.</p><p>Output: Tensor</p></div></div>
+</p>
+<h1 id="!gelu">!gelu</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!gelu</code><code class="codex-lambda-list">(x &amp;key (approximate t))</code><div class="codex-docstring"><p>Applying gelu to x, returning a new sysconst.</p><p>Paper: https://arxiv.org/abs/1606.08415.</p><p>TOOD: Improve its performance</p><p>GeLU(x) = x * s(x)</p><p>When approximate is t:</p><p>s(x) = x/2 * [1 + tanh(sqrt(2/pi * (x + 0.044715 * x^3)))]</p><p>When is nil:</p><p>Not implemented (TODO)</p><pre><code class="lisp">(setq x (!randn `(10 10)))
+(!gelu x)
+;#Const(((0.201... 0.038... ~ 0.158... 0.040...)        
+;                 ...
+;        (0.300... 1.395... ~ 0.030... 0.029...)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!leakey-relu">!leakey-relu</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!leakey-relu</code><code class="codex-lambda-list">(x &amp;optional (alpha 0.01))</code><div class="codex-docstring"><p>Applying Leakey-relu to x, returning a new sysconst.</p><p>Leakey-ReLU is defined as out = {alpha (x &lt; 0), x (x &gt;= 0)}</p><p>Example:</p><pre><code class="lisp">(setq x (!randn `(10 10)))
+#Const(((0.635... -0.56... ~ -1.15... -1.50...)        
+                 ...
+        (0.775... 1.258... ~ -1.29... 0.240...)) :mgl t :shape (10 10))
+
+(!leakey-relu x)
+#Const(((0.635... 0.003... ~ 0.013... 0.022...)        
+                 ...
+        (0.775... 1.258... ~ 0.016... 0.240...)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!swish">!swish</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!swish</code><code class="codex-lambda-list">(x &amp;key (beta (const 1.0)))</code><div class="codex-docstring"><p>Applying swish to each element of x</p><p>Swish is defined as out = (/ 1 (+ 1 (exp (* beta -1 x))))</p><p>In default beta is 1.0, if you want to use trainable one, <code class="codex-param">Swish</code> is available as a waffe model.</p><p>Note that beta must begin given as a waffetensor.</p><pre><code class="lisp">(setq x (!randn `(10 10)))
+#Const(((0.635... -0.56... ~ -1.15... -1.50...)        
+                 ...
+        (0.775... 1.258... ~ -1.29... 0.240...)) :mgl t :shape (10 10))
+
+(!swish x)
+;#Const(((0.415... -0.20... ~ -0.27... -0.27...)        
+;                 ...
+;        (0.531... 0.980... ~ -0.27... 0.134...)) :mgl t :shape (10 10))
+
+(call (Swish :beta 1.0) x) ; its beta is trainable by backpropgating.
+;#Const(((0.415... -0.20... ~ -0.27... -0.27...)        
+;                 ...
+;        (0.531... 0.980... ~ -0.27... 0.134...)) :mgl t :shape (10 10))
+</code></pre></div></div>
+</p>
+<h1 id="!softmax">!softmax</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!softmax</code><code class="codex-lambda-list">(x &amp;key (avoid-overflow t))</code><div class="codex-docstring"><p>Applying softmax to x. !softmax has three behaviours depending on the number of dimensions.</p><p>The number of dims is...
+</p><dl><dt>1</dt><dd>Softmax is applied to dim=0
+<pre><code class="lisp">(setq a (!randn `(10)))
+(!softmax a)
+;#Const((0.910... 0.886... ~ 0.802... 0.616...) :mgl t :shape (10))
+</code></pre>
+</dd><dt>2</dt><dd>Softmax is applied to dim=0
+<pre><code class="lisp">(setq a (!randn `(10 10)))
+;#Const(((-0.29... -1.99... ~ -0.36... 1.725...)        
+;                 ...
+;        (0.695... -0.94... ~ 1.179... 0.655...)) :mgl t :shape (10 10))
+
+(!softmax a)
+;#Const(((0.064... 0.011... ~ 0.060... 0.489...)        
+;                 ...
+;        (0.129... 0.024... ~ 0.209... 0.124...)) :mgl t :shape (10 10))
+</code></pre>
+</dd><dt>3</dt><dd>Softmax is applied to dim=0
+<pre><code class="lisp">(setq a (!randn `(10 10 10)))
+;#Const((((2.585... 0.517... ~ 0.428... 0.059...)         
+;                   ...
+;         (-2.11... 0.308... ~ -0.91... 0.649...))        
+;                 ...
+;        ((-0.75... 1.030... ~ 0.656... -0.00...)         
+;                   ...
+;         (-0.37... -0.52... ~ 1.589... -0.10...))) :mgl t :shape (10 10 10))
+
+(!softmax a)
+;#Const((((0.374... 0.047... ~ 0.043... 0.029...)         
+;                   ...
+;         (0.010... 0.115... ~ 0.033... 0.162...))        
+;                 ...
+;        ((0.029... 0.172... ~ 0.118... 0.061...)         
+;                   ...
+;         (0.048... 0.041... ~ 0.345... 0.063...))) :mgl t :shape (10 10 10))
+</code></pre>
+</dd><dt>4</dt><dd>Todo: currently, it returns error.
+<pre><code class="lisp"></code></pre>
+</dd></dl></div></div>
+</p>
+<h1 id="with-verbose">with-verbose</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-verbose</code><code class="codex-lambda-list">(&amp;body body)</code><div class="codex-docstring">In the codes below, the computation nodes will be displayed when (backward out)</div></div>
+</p>
+<h1 id="with-dtype">with-dtype</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-dtype</code><code class="codex-lambda-list">(dtype &amp;body body)</code><div class="codex-docstring">Switches the dtype. dtype = (:float :double). In default, :float.</div></div>
+</p>
+<h1 id="dtypecase">dtypecase</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">dtypecase</code><code class="codex-lambda-list">(&amp;rest cases)</code><div class="codex-docstring">todo :docstring</div></div>
+</p>
+<h1 id="define-with-typevar">define-with-typevar</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">define-with-typevar</code><code class="codex-lambda-list">(function-name type-specifier (&amp;rest args) &amp;body body &amp;aux (fnames (map (quote list) (function (lambda (p) (symb function-name p))) *dtype-prefixes*)) (params (get-params args)))</code><div class="codex-docstring">Todo: Document</div></div>
+</p>
+<h1 id="with-backend">with-backend</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-backend</code><code class="codex-lambda-list">(backend &amp;body body)</code><div class="codex-docstring"><p>Switches a backend.</p><p>See also: define-node-extension</p></div></div>
+</p>
+<h1 id="define-node-extension">define-node-extension</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">define-node-extension</code><code class="codex-lambda-list">(name &amp;key optimize backend (disassemble-forward nil) forward-declaim forward (disassemble-backward nil) backward-declaim backward)</code><div class="codex-docstring"><p>Adds a new backend to the defined node.</p><p>The type of backend is managed by keywords. The backend defined in defnode is always :mgl.</p><p>Defined backends can be switched by the macro <code>(with-backend backend)</code>.</p><p>As long as *restart-non-exist-backend* is t, when a computation node reaches a backend that is not defined, :mgl is called, otherwise the condition backend-doesnt-exists will occurs.</p><p>Example:</p><pre><code class="lisp">(define-node-extension cl-waffe::AddTensor
+  :backend :test-backend
+  :forward ((x y)
+        (const (+ 1 1)))
+  :backward ((dy)
+         (list dy dy)))
+
+(with-backend :mgl
+   (print (!add 10 10))) ;=&gt; Const(20)
+
+(with-backend :test-backend
+   (print (!add 10 10))) ;=&gt; Const(2)
+
+(with-backend :hogehoge
+   (print (!add 10 10))) ; =&gt; Const(20)
+
+(let ((*restart-non-exist-backend* nil))
+    (with-backend :hogehoge
+        (print (!add 10 10)))) ;=&gt; Evaluation aborted on #&lt;CL-WAFFE::BACKEND-DOESNT-EXISTS {100FA18C43}&gt;.
+</code></pre><p>
+</p></div></div>
+</p>
+<h1 id="*restart-non-exist-backend*">*restart-non-exist-backend*</h1><p>
+<div class="codex-doc-node codex-variable"><code class="codex-name">*restart-non-exist-backend*</code><div class="codex-docstring">When t, in the case when the specified backend doesn't exist, cl-waffe calls a standard implementation backend</div></div>
+</p>
+<h1 id="!allow-destruct">!allow-destruct</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">!allow-destruct</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Tensors which path through this macro are allowed to be destructed by cl-waffe's kernel.</p><p>
+In default, cl-waffe's operators won't make side effects.
+</p><pre><code class="lisp">(setq a (!randn `(3 3)))
+
+;#Const(((0.811... -0.43... -0.91...)        
+;                 ...
+;        (0.959... -0.62... 1.150...)) :mgl t :shape (3 3))
+
+(!exp a)
+;#Const(((2.252... 0.645... 0.400...)        
+;                 ...
+;        (2.610... 0.534... 3.159...)) :mgl t :shape (3 3))
+
+(print a)
+;#Const(((0.811... -0.43... -0.91...)        
+;                 ...
+;        (0.959... -0.62... 1.150...)) :mgl t :shape (3 3))
+</code></pre><p>However, This macro let kernel know that the given tensor is allowed to destruct(i.e.: the result is overwritten)</p><pre><code class="lisp">(setq a (!randn `(3 3)))
+
+;#Const(((0.811... -0.43... -0.91...)        
+;                 ...
+;        (0.959... -0.62... 1.150...)) :mgl t :shape (3 3))
+
+(!allow-destruct a)
+; T
+
+(!exp a)
+;#Const(((2.252... 0.645... 0.400...)        
+;                 ...
+;        (2.610... 0.534... 3.159...)) :mgl t :shape (3 3))
+
+(print a) ; You can see the result is overwritten.
+;#Const(((2.252... 0.645... 0.400...)        
+;                 ...
+;        (2.610... 0.534... 3.159...)) :mgl t :shape (3 3))
+</code></pre><p>Avoiding copy, destructive operations are superior in terms of memory usage.</p><pre><code class="lisp">(setq a (!randn `(100 100)))
+
+(time (!exp a))
+;Evaluation took:
+;  0.000 seconds of real time
+;  0.000275 seconds of total run time (0.000219 user, 0.000056 system)
+;  100.00% CPU
+;  498,150 processor cycles
+;  31,264 bytes consed
+
+(!allow-destruct a)
+
+(time (!exp a))
+; Evaluation took:
+;  0.000 seconds of real time
+;  0.000178 seconds of total run time (0.000160 user, 0.000018 system)
+;  100.00% CPU
+;  273,646 processor cycles
+;  0 bytes consed 
+</code></pre><p>See also: !disallow-destruct which does the opposite.
+</p></div></div>
+</p>
+<h1 id="!disallow-destruct">!disallow-destruct</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">!disallow-destruct</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring">Tensors that path through this macro are not destructed.<pre><code class="lisp">(setq a (!randn `(3 3)))
+;#Const(((1.084... -1.10... 1.406...)        
+;                 ...
+;        (1.044... 0.059... -0.53...)) :mgl t :shape (3 3))
+
+(!allow-destruct a)
+; T
+(!disallow-destruct a)
+; NIL
+
+(!exp a)
+;#Const(((2.957... 0.329... 4.080...)        
+;                 ...
+;        (2.840... 1.060... 0.584...)) :mgl t :shape (3 3))
+
+(print a) ; a is kept remained.
+;#Const(((1.084... -1.10... 1.406...)        
+;                 ...
+;        (1.044... 0.059... -0.53...)) :mgl t :shape (3 3))
+</code></pre></div></div>
+</p>
+<h1 id="28-defnode">defnode</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">defnode</code><code class="codex-lambda-list">(name initializer-arguments &amp;key parameters (disassemble-forward nil) forward-declaim forward (disassemble-backward nil) backward-declaim backward (document An node, defined by cl-waffe.))</code><div class="codex-docstring"><p>Defines computation nodes in a format that cl-waffe can handle.</p><p>Note: the data structures that can be used in arguments, and returned values, must be following:</p><ol><li>WaffeTensor</li><li>1D list which each element is WaffeTensor</li></ol><p>Be aware that you can't use (values x y ...).</p><dl><dt>name</dt><dd>The node's name. constructor and structure are being defined named after this argument.</dd><dt>initializer-argument</dt><dd>arguments the constructor have.</dd><dt>parameter</dt><dd>The parameters this node has being initializer with initializer-argument.</dd><dt>disassemble-forward</dt><dd>when t, when this node is compiled, display the disassemble of forward slot.</dd><dt>forward-declaim</dt><dd>Describe the declaim for the forward function. Note that the first argument is a structure. and :forward keyword in this declaim will be replaced by the forward function's name.</dd><dt>forward</dt><dd>the definition of forward</dd><dt>disassemble-backward</dt><dd>when t, when this node is compiled, display the disassemble of backward slot.</dd><dt>backward-declaim</dt><dd>Describe the declaim for the backward function. Note that the first argument is a structure. and :backward keyword in this declaim will be replaced by the backward function's name.</dd><dt>backward</dt><dd>the definition of backward</dd></dl></div></div>
+</p>
+<h1 id="29-defmodel">defmodel</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">defmodel</code><code class="codex-lambda-list">(name initializer-arguments &amp;key (parameters nil) (disassemble-forward nil) forward-declaim forward (document An model, defined by cl-waffe))</code><div class="codex-docstring"><p>This macro defines a cl-waffe model as <code class="codex-param">name</code>.</p><p>At the same time, a constructor <code class="codex-param">name</code> is defined and you can initialize your model like:</p><pre><code class="lisp">(cl-waffe.nn:LinearLayer 100 20) ; =&gt; [Model: Linearlayer]
+</code></pre><p>
+</p><dl><dt>name</dt><dd>Your model and constructor name</dd><dt>args</dt><dd>The arguments of a constructor</dd><dt>parameters</dt><dd><p>The parameters your model has.</p><p>Every time you initialize the model, the parameters are initialized.</p><p>Note that <code class="codex-param">defmodel</code> behaves like class.</p><p>The arguments are the same as <a href="http://l1sp.org/cl/defstruct"><code>defstruct</code></a></p><p>Format Example: ((param-name param-initial-value &amp;key (type your-type)))</p></dd><dt>forward</dt><dd><p>Define here the forward propagation of your model.</p><p>When backward, <b>Automatic differentiation applies</b>.</p></dd></dl><p>
+</p></div></div>
+</p>
+<h1 id="30-defoptimizer">defoptimizer</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">defoptimizer</code><code class="codex-lambda-list">(name initializer-arguments &amp;key parameters (disassemble-update nil) update-declaim update (document An optimizer, defined by cl-waffe.))</code><div class="codex-docstring"><p>Defines optimizer in the format that cl-waffe can handle.</p><dl><dt>Name</dt><dd>The optimizer's structure and constructor will be defined after name</dd><dt>Args</dt><dd>Initializer of the optimizer. The first value of initializer is the hash-table that collected model's parameter where the key is fixnum from 0 to n. You have to store it.</dd><dt>parameters</dt><dd>An parameters that it has.</dd><dt>update</dt><dd>when training and (update) is called, this slot is called and you optimizer your parameters.</dd><dt>optimize</dt><dd>when t, the :update slot is defined with (optimize (speed 3)(space 0)(debug 0)) Default: nil</dd><dt>document</dt><dd>docstring for optimizers. You can use string or (with-usage) macro</dd></dl><p>Example:</p><pre><code class="lisp">;defoptimizer's args must start with params (symbol-name doesn't matter) which receives hash-table whose key is 1..n
+
+(defoptimizer SGD (params &amp;key (lr 1e-3))
+  :optimize t
+  :parameters ((params params :type hash-table)
+               (lr lr :type single-float))
+  :update (()
+       (dotimes (i (hash-table-count (self params)))
+         ; W(n+1) = W(n) - n * grad
+         (!modify (gethash i (self params))) :+=
+               (!mul (self lr)(grad (gethash i (self params)))))))
+
+;(call (SGD (find-variables model))) will works as update.
+;(call-backward (SGD)) will works as zero-grads.
+
+</code></pre><p>
+</p></div></div>
+</p>
+<h1 id="call">call</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">call</code><code class="codex-lambda-list">(model &amp;rest inputs &amp;aux (features (model-inlineable-p model)))</code><div class="codex-docstring">calls the given model's forward slot with inputs.</div></div>
+</p>
+<h1 id="call-backward">call-backward</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">call-backward</code><code class="codex-lambda-list">(model &amp;rest inputs)</code><div class="codex-docstring">calls the given model's backward, with inputs.</div></div>
+</p>
+<h1 id="self">self</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">self</code><code class="codex-lambda-list">(name)</code><div class="codex-docstring">Todo: Docstring</div></div>
+</p>
+<h1 id="save-for-backward">save-for-backward</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">save-for-backward</code><code class="codex-lambda-list">(slot tensor)</code><div class="codex-docstring">TODO :DOCSTRING</div></div>
+</p>
+<h1 id="get-forward-caller">get-forward-caller</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">get-forward-caller</code><code class="codex-lambda-list">(model)</code><div class="codex-docstring">Returns the given node (model/node/optimizer)'s forward slot, which is callable with funcall/apply.</div></div>
+</p>
+<h1 id="get-backward-caller">get-backward-caller</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">get-backward-caller</code><code class="codex-lambda-list">(model)</code><div class="codex-docstring">Returns the given node (model/node/optimizer)'s backward slot, which is callable with funcall/apply.</div></div>
+</p>
+<h1 id="with-calling-layers">with-calling-layers</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">with-calling-layers</code><code class="codex-lambda-list">(input &amp;rest layers)</code><div class="codex-docstring"><p>This macro allows to sequentially call layers.</p><p>the argument <code class="codex-param">input</code> must be a tensor.</p><p>Refering each layers from (self) macro, destructively modifying x with the returned value.</p><p>Note: This macro supposes models to be returned a single tensor, not a list.</p><pre><code class="lisp">(defmodel MLP (activation)
+   :parameters ((layer1   (denselayer (* 28 28) 512 T activation))
+   	        (layer2   (denselayer 512 256 T activation))
+	        (layer3   (linearlayer 256 10 T)))
+   :forward ((x)
+	     (with-calling-layers x
+	       (layer1 x)
+ 	       (layer2 x)
+               (layer3 x))))
+</code></pre><p>For the different arguments.</p><pre><code class="lisp">(with-calling-layers x
+     (layer1 x 1 1)
+     (layer2 1 x 2)
+     (layer3 x y))
+</code></pre><p>Output: An last value of layers.</p></div></div>
+</p>
+<h1 id="31-deftrainer">deftrainer</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">deftrainer</code><code class="codex-lambda-list">(name args &amp;key model optimizer optimizer-args step-model predict (document An trainer structure defined by cl-waffe.))</code><div class="codex-docstring"><p>Defining trainer, which is made in order to call <code class="codex-param">train</code> function.</p><p>The slots you defined can be invoked by using <code>(step-model model &amp;rest args)</code>, <code>(predict model &amp;rest args)</code>. See below.</p><p>
+</p><dl><dt>model</dt><dd>An model defined by <code>(defmodel)</code> which you want to train.</dd><dt>optimizer</dt><dd>An optimizer defined by <code>(defoptimizer)</code></dd><dt>optimizer-args</dt><dd>An arguments for optimizer</dd><dt>step-model</dt><dd>For each batch step, :step-model is called in <code>(train)</code> function. Describe here forward step, backward, zero-grad, update for training.</dd><dt>predict</dt><dd>an code for predicting</dd></dl><p>
+These macro below are defined by <a href="http://l1sp.org/cl/macrolet"><code>macrolet</code></a> and you can use them in :step-model, :predict</p><dl><dt>(self name)</dt><dd>access trainer's parameters.</dd><dt>(model)</dt><dd>access trainer's model, defined by :model keyword.</dd><dt>(zero-grad)</dt><dd>Find model's all parameters and constants, and initialize their grads. (i.e. call optimizer's backward)</dd><dt>(update)</dt><dd>Find model's all parameters, and call optimizer and change parameter's data. (i.e. call optimizer's forward)</dd></dl><p>This trainer macro is defined in order to integrate following works:</p><ol><li>calling models</li><li>calling criterions</li><li>calling backward</li><li>calling optimizer</li><li>calling zero-grad</li><li>defining predict</li></ol><p>Example:</p><pre><code class="lisp">(deftrainer MLPTrainer (activation lr)
+  :model          (MLP activation)
+  :optimizer      cl-waffe.optimizers:Adam ; Note: :optimizer requires a single variable.
+  :optimizer-args (:lr lr) ; these arguments directly expanded to optimizer's args.
+  :step-model ((x y)
+	       (zero-grad) ; call zero-grad
+	       (let ((out (cl-waffe.nn:softmax-cross-entropy (call (model) x) y))) ; get criterion
+		 (backward out) ; backward
+		 (update) ; call optimizer
+		 out)) ; return loss
+ :predict ((x)(call (model) x))) ;for predict
+
+(setq trainer (MLPTrainer :relu 1e-4)) ; init your trainer
+
+; Train:   (step-model trainer model-input-x model-input-y)
+; Predict: (predict trainer model-input-x)
+
+</code></pre></div></div>
+</p>
+<h1 id="step-model">step-model</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">step-model</code><code class="codex-lambda-list">(trainer &amp;rest args)</code><div class="codex-docstring"><p>An function for calling trainer object defined by deftrainer
+By using this function, trainer's step-model will be invoked.</p><p>Input: Trainer, Args</p></div></div>
+</p>
+<h1 id="predict">predict</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">predict</code><code class="codex-lambda-list">(trainer &amp;rest args)</code><div class="codex-docstring">An function for calling trainer's predict slot</div></div>
+</p>
+<h1 id="model">model</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">model</code><code class="codex-lambda-list">nil</code><div class="codex-docstring">Todo: Docstring</div></div>
+</p>
+<h1 id="update">update</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">update</code><code class="codex-lambda-list">(&amp;rest args)</code><div class="codex-docstring">Todo: Docstring</div></div>
+</p>
+<h1 id="zero-grad">zero-grad</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">zero-grad</code><code class="codex-lambda-list">nil</code><div class="codex-docstring">Todo docstring</div></div>
+</p>
+<h1 id="32-defdataset">defdataset</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">defdataset</code><code class="codex-lambda-list">(name args &amp;key parameters next length (document An dataset structure defined by cl-waffe.))</code><div class="codex-docstring"><p>Defining dataset. (This is kinda pytorch's dataloader)</p><p>The slots you defined can be invoked by using (get-dataset dataset index)(get-length dataset).</p><dl><dt>parameters</dt><dd>parameters datasets have.</dd><dt>next</dt><dd>when function (get-dataset dataset index) is called, this slot invokes. Return waffetensor for the next batch in response to your task.</dd><dt>length</dt><dd>In this form, the function must return the total length of your datasets where the value is fixnum. (Not a batch, and not a current index.)</dd></dl><pre><code class="lisp">(defdataset Mnistdata (train valid batch-size)
+  :parameters ((train train)(valid valid)(batch-size batch-size))
+  :next    ((index)
+	    (list (!set-batch (self train) index (self batch-size))
+		  (!set-batch (self valid) index (self batch-size))))
+  :length (()(car (!shape (self train)))))
+
+</code></pre><p>cl-waffe excepts index to be 1, 2, 3, ... (dataset-maxlen)</p><p>So, please manage batch-sizes in args and :next slots.</p></div></div>
+</p>
+<h1 id="get-dataset">get-dataset</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">get-dataset</code><code class="codex-lambda-list">(dataset index)</code><div class="codex-docstring">Get datum of the index from dataset.
+Input: dataset ... dataset defined by defdataset.
+       index ... fixnum</div></div>
+</p>
+<h1 id="get-dataset-length">get-dataset-length</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">get-dataset-length</code><code class="codex-lambda-list">(dataset)</code><div class="codex-docstring">Get total size of your dataset.</div></div>
+</p>
+<h1 id="33-model-list">model-list</h1><p>
+<div class="codex-error codex-no-node">No node with name <code>model-list</code>.</div>
+</p>
+<h1 id="mlist">mlist</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">mlist</code><code class="codex-lambda-list">(&amp;rest models)</code><div class="codex-docstring">define mlist</div></div>
+</p>
+<h1 id="mth">mth</h1><p>
+<div class="codex-doc-node codex-operator codex-function"><code class="codex-name">mth</code><code class="codex-lambda-list">(index mlist)</code><div class="codex-docstring">Accessor for model-list</div></div>
+</p>
+<h1 id="grad">grad</h1><p>
+<div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">grad</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Accessing tensor's grad.</p><p>When tensor's grad is nil, an error occurs</p><dl><dt>Input</dt><dd>WaffeTensor</dd><dt>Output</dt><dd>An tensor's grad which is the type of mgl-mat:mat or waffetensorcontettype</dd></dl><p>Note: grad is <b>not</b> setfable</p></div></div>
+</p>
+
+      </div>
+    </main>
+  </article>
+  <footer>
+    <div class="info">
+      Created with <a href="https://github.com/CommonDoc/codex">Codex</a>.
+    </div>
+  </footer>
+  <script>
+   HighlightLisp.highlight_auto();
+  </script>
+
+  </body>
+</html>
