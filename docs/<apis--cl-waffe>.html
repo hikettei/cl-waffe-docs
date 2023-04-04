@@ -53,65 +53,65 @@
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!normal</code><code class="codex-lambda-list">(dims &amp;optional (mean 2.0) (stddev 1.0))</code><div class="codex-docstring">Initializes the new tensor with sampling the standard distribution.</div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!normal `(10 10)) :mean 2.0 :stddev 1.0
-</code></pre><pre><code class="lisp">#Const(((1.594... 0.639... ~ 2.525... 2.090...)        
+</code></pre><pre><code class="lisp">#Const(((0.939... 1.594... ~ 3.769... 2.525...)        
                  ...
-        (2.286... 3.429... ~ 3.609... 1.797...)) :dtype :float :shape (10 10) :backward NIL)
+        (2.022... 2.286... ~ 0.844... 3.609...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!randn">!randn</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!randn</code><code class="codex-lambda-list">(dims)</code><div class="codex-docstring">Initializes the new tensor of dims with sampling normal distribution where mean=0.0, stddev=1.0</div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!randn `(10 10))
-</code></pre><pre><code class="lisp">#Const(((-0.17... -1.02... ~ 0.113... 0.739...)        
+</code></pre><pre><code class="lisp">#Const(((-0.20... -0.17... ~ -0.82... 0.113...)        
                  ...
-        (-0.45... 1.984... ~ 2.218... -0.37...)) :dtype :float :shape (10 10) :backward NIL)
+        (-1.33... -0.45... ~ 0.163... 2.218...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!uniform-random">!uniform-random</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!uniform-random</code><code class="codex-lambda-list">(dims &amp;key (limit 1))</code><div class="codex-docstring"><p>Initializes tensor with sampling uniform random.</p><p>The returned tensor is filled by random numbers 0&lt;=x&lt;limit</p></div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!uniform-random `(10 10) :limit 2.0)
-</code></pre><pre><code class="lisp">#Const(((1.955... 1.711... ~ 1.089... 1.056...)        
+</code></pre><pre><code class="lisp">#Const(((0.290... 1.492... ~ 1.814... 0.777...)        
                  ...
-        (0.377... 1.914... ~ 1.782... 0.836...)) :dtype :float :shape (10 10) :backward NIL)
+        (0.194... 1.930... ~ 1.669... 1.442...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!beta">!beta</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!beta</code><code class="codex-lambda-list">(dims alpha beta)</code><div class="codex-docstring"><p>Initializes the new tensor of dims with sampling beta distribution.</p><p>Algorithm: https://dl.acm.org/doi/pdf/10.1145/359460.359482</p></div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!beta `(10 10) 5.0 1.0)
-</code></pre><pre><code class="lisp">#Const(((0.964... 0.841... ~ 0.807... 0.935...)        
+</code></pre><pre><code class="lisp">#Const(((0.917... 0.964... ~ 0.927... 0.807...)        
                  ...
-        (0.777... 0.952... ~ 0.466... 0.995...)) :dtype :float :shape (10 10) :backward NIL)
+        (0.876... 0.777... ~ 0.902... 0.466...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!gamma">!gamma</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!gamma</code><code class="codex-lambda-list">(dims k &amp;optional (theta 1.0))</code><div class="codex-docstring">Initializes the new tensor of dims with samples of gamma distribution.</div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!gamma `(10 10) 1.0)
-</code></pre><pre><code class="lisp">#Const(((0.354... 0.924... ~ 0.569... 1.162...)        
+</code></pre><pre><code class="lisp">#Const(((2.338... 1.112... ~ 0.845... 0.096...)        
                  ...
-        (0.700... 0.695... ~ 1.189... 0.379...)) :dtype :float :shape (10 10) :backward NIL)
+        (0.185... 0.081... ~ 0.041... 2.381...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!chisquare">!chisquare</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!chisquare</code><code class="codex-lambda-list">(dims df)</code><div class="codex-docstring">Initializes tensor with samples of chi-square distribution using the gamma distribution..</div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!chisquare `(10 10) 2.0)
-</code></pre><pre><code class="lisp">#Const(((0.822... 8.489... ~ 0.238... 0.073...)        
+</code></pre><pre><code class="lisp">#Const(((0.228... 1.644... ~ 3.603... 1.272...)        
                  ...
-        (0.245... 0.905... ~ 1.428... 2.083...)) :dtype :float :shape (10 10) :backward NIL)
+        (8.122... 0.070... ~ 3.789... 0.322...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!bernoulli">!bernoulli</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!bernoulli</code><code class="codex-lambda-list">(dims rate)</code><div class="codex-docstring">Initializes the tensor of dims with sampling bernoulli distribution, where p=rate. p=[0, 1]</div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!bernoulli `(10 10) 0.5)
-</code></pre><pre><code class="lisp">#Const(((1.0 0.0 ~ 1.0 1.0)        
+</code></pre><pre><code class="lisp">#Const(((1.0 1.0 ~ 1.0 0.0)        
                  ...
-        (1.0 1.0 ~ 0.0 1.0)) :dtype :float :shape (10 10) :backward NIL)
+        (0.0 0.0 ~ 1.0 1.0)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!binomial">!binomial</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!binomial</code><code class="codex-lambda-list">(dims rate)</code><div class="codex-docstring">Alias for !bernoulli</div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!binomial `(10 10) 0.5)
-</code></pre><pre><code class="lisp">#Const(((0.0 0.0 ~ 1.0 0.0)        
+</code></pre><pre><code class="lisp">#Const(((0.0 0.0 ~ 0.0 0.0)        
                  ...
-        (0.0 0.0 ~ 0.0 1.0)) :dtype :float :shape (10 10) :backward NIL)
+        (1.0 1.0 ~ 0.0 0.0)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!random-with">!random-with</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!random-with</code><code class="codex-lambda-list">(dims f)</code><div class="codex-docstring"><p>Initializes the tensor of dims. Each element is initialized with <code class="codex-param">f</code>, f is a funcallable function. and called with the index of the tensor.</p><p>See also: !init-with which is alias for !random-with.
@@ -127,21 +127,21 @@
 </div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) 1.0)
-</code></pre><pre><code class="lisp">#Const(((0.840... 0.956... ~ 0.640... 0.208...)        
+</code></pre><pre><code class="lisp">#Const(((0.569... 0.154... ~ 0.840... 0.956...)        
                  ...
-        (0.212... 0.374... ~ 0.474... 0.948...)) :dtype :float :shape (10 10) :backward NIL)
+        (0.344... 0.495... ~ 0.212... 0.374...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) 3)
-</code></pre><pre><code class="lisp">#Const(((0.0 2.0 ~ 1.0 2.0)        
+</code></pre><pre><code class="lisp">#Const(((2.0 1.0 ~ 0.0 2.0)        
                  ...
-        (1.0 0.0 ~ 2.0 0.0)) :dtype :float :shape (10 10) :backward NIL)
+        (2.0 2.0 ~ 1.0 0.0)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) `(1.0 2.0))
-</code></pre><pre><code class="lisp">#Const(((1.079... 1.547... ~ 1.897... 1.650...)        
+</code></pre><pre><code class="lisp">#Const(((1.642... 1.500... ~ 1.848... 1.415...)        
                  ...
-        (1.142... 1.691... ~ 1.221... 1.478...)) :dtype :float :shape (10 10) :backward NIL)
+        (1.032... 1.951... ~ 1.362... 1.905...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (!random `(10 10) `(1 5))
-</code></pre><pre><code class="lisp">#Const(((1.0 3.0 ~ 3.0 3.0)        
+</code></pre><pre><code class="lisp">#Const(((2.0 2.0 ~ 4.0 4.0)        
                  ...
-        (4.0 1.0 ~ 1.0 2.0)) :dtype :float :shape (10 10) :backward NIL)
+        (1.0 3.0 ~ 2.0 3.0)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre>
 <h1 id="!zeros-like">!zeros-like</h1><p>
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">!zeros-like</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Return a const where the shape is the same as tensor but elements are zero.</p><p>Example:

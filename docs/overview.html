@@ -56,11 +56,11 @@ The primary goal of this project is:
 </p><ol><li>Flexible And Efficient Platform in 99% Pure Common Lisp.</li><li>Make APIs Extensible as possible, enabling users not to depend the standard implementations.</li><li>Eazy to optimize with Inlined Function.</li></ol><p>
 This framework is designed to be user-friendly first, enabling both beginners and experts in the field of AI to take advantage of capabilities of powerful programming language, Common Lisp.</p><p>
 ⚠️ <b>The documentation is being rewritten and is currently only half complete.</b>
-<b><p>This framework is still under development and experimental. If you are thinking on using it in your products, It would be wiser to use other libraries. True, the author of cl-waffe is not a expert of AI.</p></b>
+<b><p>This framework is still under development and experimental. If you are thinking on using it in your products, It would be wiser to use other libraries. True, the author of cl-waffe is not a expert of AI. (Also, not having cuda gpus, I can't test my framework on cuda.)</p></b>
 </p>
 <h1 id="links">Links</h1><p><a href="https://github.com/hikettei/cl-waffe">Official Github Repository</a></p><p><a href="https://hikettei.github.io/cl-waffe-docs/docs/overview.html">The Documentation</a></p><p><a href="https://github.com/hikettei/cl-waffe/tree/main/tutorials/jp">Tutorial Notebooks (Written in Japanese)</a></p><p><a href="https://github.com/hikettei/cl-waffe/blob/main/benchmark/Result.md">Benchmarks</a>
 </p>
-<h1 id="workloads">Workloads</h1><ol><li>Full Optimization</li><li>save models with npz format</li><li>🎉 release cl-waffe v0.1</li><li>Add more standard implementations</li></ol><p>
+<h1 id="workloads">Workloads</h1><ol><li>Make Full optimized implementation of the standard nodes.</li><li>Save And Restore Models with keeping compatibility with npz.</li><li>🎉 release cl-waffe v0.1</li><li>Add more standard implementation of NNs, after the foundations are in place.</li></ol><p>
 </p>
 <h1 id="lla-backend">LLA Backend</h1><p>cl-waffe's matrix operations are performed via mgl-mat, and mgl-mat uses LLA. Accordingly, cl-waffe's performance hinges on mgl-mat and LLA's performance.
 The most recommended one is OpenBLAS. Append following in your setup files (e.g.: ~/.roswell/init.lisp, ~/.sbclrc). For more details, visit the official repositories.

@@ -54,13 +54,13 @@
 </p><h2 id="what-can-waffetensor-do?">What can WaffeTensor do?</h2><p>Internally, All matrices created by cl-waffe is a type of mgl-mat, being accessed by the accessor (data tensor).</p><p>
 <b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (setq x (!randn `(3 3))) ; WaffeTensor
-</code></pre><pre><code class="lisp">#Const(((0.113... -0.99... 0.546...)        
+</code></pre><pre><code class="lisp">#Const(((0.050... 1.007... 0.258...)        
                  ...
-        (-1.19... 1.772... -0.16...)) :dtype :float :shape (3 3) :backward NIL)
+        (-0.39... 0.869... -0.55...)) :dtype :float :shape (3 3) :backward NIL)
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (data x) ;mgl-mat:mat
-</code></pre><pre><code class="lisp">#&lt;MAT 3x3 AB #2A((0.11365369 -0.9985097 0.54621303)
-                 (1.6119125 1.0711697 -0.6234866)
-                 (-1.190943 1.7725886 -0.16458914))&gt;
+</code></pre><pre><code class="lisp">#&lt;MAT 3x3 AB #2A((0.050437 1.0072675 0.25835297)
+                 (1.703179 -0.53816134 0.09240111)
+                 (-0.39267328 0.8698013 -0.55995613))&gt;
 </code></pre><p>In the same way, WaffeTensor can restore scalar object.</p><p>
 <b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (setq x (const 1.0)) : WaffeTensor
@@ -101,29 +101,29 @@ You may well feel it is just rebundant for waffetensor to be only a wrapper. Of 
 <div class="codex-doc-node codex-operator codex-function"><code class="codex-name">backward</code><code class="codex-lambda-list">(tensor)</code><div class="codex-docstring"><p>Compute back propagation by traversing the Tensor's computation node.</p><p>The parameters of the model defined by (tensor) or to which (Parameter tensor) is applied, store the gradient in grad slot.</p><p>Note that: tensor must be the shape of `(1) or single value. Otherwise an error occurs.</p><p>In the process calculating backward, new backwards won't be created. (*no-grad* automatically becomes t)</p><dl><dt>Input</dt><dd>WaffeTensor</dd><dt>Output</dt><dd>NIL</dd></dl></div></div>
 </p><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (setq a (parameter (!randn `(3 3))))
-</code></pre><pre><code class="lisp">#Parameter{((0.125... -0.95... 0.938...)            
+</code></pre><pre><code class="lisp">#Parameter{((-1.07... -1.93... -0.07...)            
                          ...
-            (-0.23... 2.095... -0.73...)) :dtype :float :shape (3 3) :backward NIL}
+            (1.353... 0.451... 2.473...)) :dtype :float :shape (3 3) :backward NIL}
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (setq b (parameter (!randn `(3 3))))
-</code></pre><pre><code class="lisp">#Parameter{((0.093... 1.027... -0.46...)            
+</code></pre><pre><code class="lisp">#Parameter{((0.234... 0.449... -1.02...)            
                          ...
-            (0.810... -0.06... -0.69...)) :dtype :float :shape (3 3) :backward NIL}
+            (-0.42... -1.63... -0.34...)) :dtype :float :shape (3 3) :backward NIL}
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (setq c (parameter (!randn `(3 3))))
-</code></pre><pre><code class="lisp">#Parameter{((1.262... 0.641... 0.320...)            
+</code></pre><pre><code class="lisp">#Parameter{((0.157... 1.040... -0.84...)            
                          ...
-            (-0.08... 0.943... -1.26...)) :dtype :float :shape (3 3) :backward NIL}
+            (1.850... -0.26... -0.24...)) :dtype :float :shape (3 3) :backward NIL}
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (setq z (!sum (!add (!mul a b) c))) ; computes z=a*b + c, and summarize it.
-</code></pre><pre><code class="lisp">#Const(-0.3184932 :dtype SINGLE-FLOAT :backward &lt;Node: SUMUPTENSOR{W903}&gt;)
+</code></pre><pre><code class="lisp">#Const(-0.5249139 :dtype SINGLE-FLOAT :backward &lt;Node: SUMUPTENSOR{W903}&gt;)
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (backward z)
 </code></pre><pre><code class="lisp">NIL
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (grad a)
-</code></pre><pre><code class="lisp">#&lt;MAT 3x3 B #2A((0.010436081 0.11415275 -0.052036814)
-                (-0.20477839 0.10362298 0.11329234)
-                (0.09003866 -0.0077186567 -0.07688061))&gt;
+</code></pre><pre><code class="lisp">#&lt;MAT 3x3 B #2A((0.026024515 0.04989684 -0.11357514)
+                (-0.07813747 -0.032786068 -0.11216043)
+                (-0.047159225 -0.18221794 -0.038357873))&gt;
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (grad b)
-</code></pre><pre><code class="lisp">#&lt;MAT 3x3 B #2A((0.013993139 -0.10566751 0.10432069)
-                (-0.017649844 -0.05955922 -0.06815399)
-                (-0.02659057 0.23282263 -0.081720024))&gt;
+</code></pre><pre><code class="lisp">#&lt;MAT 3x3 B #2A((-0.11956648 -0.21451499 -0.008029957)
+                (0.14240001 0.11439725 0.002615907)
+                (0.15042241 0.050139852 0.27483448))&gt;
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (grad c)
 </code></pre><pre><code class="lisp">#&lt;MAT 3x3 BF #2A((0.11111111 0.11111111 0.11111111)
                  (0.11111111 0.11111111 0.11111111)
@@ -143,9 +143,9 @@ You may well feel it is just rebundant for waffetensor to be only a wrapper. Of 
 </p><pre><code class="lisp">CL-WAFFE&gt; (setq transpose (!transpose (!randn `(3 1))))
 </code></pre><pre><code class="lisp">#Const(&lt;Transposed Tensor&gt; :shape (1 3) :backward &lt;Node: TRANSPOSETENSOR{W907}&gt;)
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (value transpose)
-</code></pre><pre><code class="lisp">#&lt;MAT 1x3 B #2A((1.3619953 0.38642612 0.1761382))&gt;
+</code></pre><pre><code class="lisp">#&lt;MAT 1x3 B #2A((-2.362661 -1.4510747 -0.88706297))&gt;
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; transpose
-</code></pre><pre><code class="lisp">#Const(((1.361... 0.386... 0.176...)) :dtype :float :shape (1 3) :backward &lt;Node: TRANSPOSETENSOR{W907}&gt;)
+</code></pre><pre><code class="lisp">#Const(((-2.36... -1.45... -0.88...)) :dtype :float :shape (1 3) :backward &lt;Node: TRANSPOSETENSOR{W907}&gt;)
 </code></pre><p>This property helps to reduce the cost of !transpose before !matmul
 </p><p>
 </p><p>
@@ -153,13 +153,13 @@ You may well feel it is just rebundant for waffetensor to be only a wrapper. Of 
 </p><h3 id="initialize-constants">Initialize Constants</h3><p>cl-waffe provides various ways to initialize constants. For example, `!randn` initializes the new tensor of the given dims with sampling the standard distribution, where var=0.0, stdev=1.0. !beta samples the beta distribution with the given alpha and beta.</p><p>
 <b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (!randn `(10 10))
-</code></pre><pre><code class="lisp">#Const(((0.437... -0.17... ~ -0.31... 0.608...)        
+</code></pre><pre><code class="lisp">#Const(((-1.20... 0.160... ~ -0.68... 1.776...)        
                  ...
-        (1.008... -0.33... ~ -1.96... 0.598...)) :dtype :float :shape (10 10) :backward NIL)
+        (0.137... 0.582... ~ 1.254... 0.590...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (!beta `(10 10) 2.0 1.0)
-</code></pre><pre><code class="lisp">#Const(((0.998... 0.262... ~ 0.819... 0.482...)        
+</code></pre><pre><code class="lisp">#Const(((0.787... 0.993... ~ 0.601... 0.962...)        
                  ...
-        (0.754... 0.245... ~ 0.590... 0.184...)) :dtype :float :shape (10 10) :backward NIL)
+        (0.980... 0.505... ~ 0.553... 0.657...)) :dtype :float :shape (10 10) :backward NIL)
 </code></pre><p>WaffeTensors we obtain from standard initializing methods are Constant. In general, cl-waffe provides the constructor (const value). The given value is coerced to properly types. In this example, we obtain mgl-mat from simple-array.</p><p>
 <b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (const (make-array `(3 3)))
@@ -170,9 +170,9 @@ You may well feel it is just rebundant for waffetensor to be only a wrapper. Of 
 </p><h3 id="initialize-parameter">Initialize Parameter</h3><p>Parameters are initialized via the macro (parameter tensor), which makes the given tensor parameter.</p><p>
 <b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (parameter (!randn `(10 10)))
-</code></pre><pre><code class="lisp">#Parameter{((-1.28... 0.354... ~ -0.63... -0.69...)            
+</code></pre><pre><code class="lisp">#Parameter{((-0.41... 0.890... ~ 1.851... -0.73...)            
                          ...
-            (-2.70... 0.699... ~ -0.30... -1.77...)) :dtype :float :shape (10 10) :backward NIL}
+            (-1.29... -1.27... ~ -1.20... -2.28...)) :dtype :float :shape (10 10) :backward NIL}
 </code></pre><p>
 </p><h3 id="parameter-vs-constant">Parameter vs Constant</h3><p>Excepted Usage of them is:
 </p><dl><dt>Constant
@@ -185,7 +185,7 @@ You may well feel it is just rebundant for waffetensor to be only a wrapper. Of 
 </p>
 <h1 id="defnode-and-call">defnode and call</h1><p>
 <div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">defnode</code><code class="codex-lambda-list">(name initializer-arguments &amp;key parameters (disassemble-forward nil) forward-declaim forward (disassemble-backward nil) backward-declaim backward (document An node, defined by cl-waffe.))</code><div class="codex-docstring"><p>Defines computation nodes in a format that cl-waffe can handle.</p><p>Note: the data structures that can be used in arguments, and returned values, must be following:</p><ol><li>WaffeTensor</li><li>1D list which each element is WaffeTensor</li></ol><p>Be aware that you can't use (values x y ...).</p><dl><dt>name</dt><dd>The node's name. constructor and structure are being defined named after this argument.</dd><dt>initializer-argument</dt><dd>arguments the constructor have.</dd><dt>parameter</dt><dd>The parameters this node has being initializer with initializer-argument.</dd><dt>disassemble-forward</dt><dd>when t, when this node is compiled, display the disassemble of forward slot.</dd><dt>forward-declaim</dt><dd>Describe the declaim for the forward function. Note that the first argument is a structure. and :forward keyword in this declaim will be replaced by the forward function's name.</dd><dt>forward</dt><dd>the definition of forward</dd><dt>disassemble-backward</dt><dd>when t, when this node is compiled, display the disassemble of backward slot.</dd><dt>backward-declaim</dt><dd>Describe the declaim for the backward function. Note that the first argument is a structure. and :backward keyword in this declaim will be replaced by the backward function's name.</dd><dt>backward</dt><dd>the definition of backward</dd></dl></div></div>
-</p><p>The macros <b>defnode</b> and <b>call</b> serve as a key component of cl-waffe, since <b>defnode</b> enables users to define forward and backward propagation in a simple notations and optimize them. If needed, they're inlined via <b>call</b> macro. Let's get started with this example. it defines a computation node that finds the sum of two single-float values.</p><p>
+</p><p>The macros <b>defnode</b> and <b>call</b> server as a key component of cl-waffe. In designing deep learning models, incorporating object-oriented programming can lead to more consice descriptions. Although Common Lisp has a powerful framework: CLOS and Closer-MOP, but I think its computational speed strongly depends on what common lisp implementation to use. (e.g.: SBCL/Clozure CL...) Thus, by using only defstruct and defun for defining the computation nodes and wrapping them with macros, (defnode) and (call), I have reduced the overhead associated with the process. This example shows how to define ScalarAdd Node.</p><p>
 <b>Input</b>
 </p><pre><code class="lisp">CL-WAFFE&gt;
 (defnode ScalarAdd ()
@@ -279,7 +279,7 @@ Setting :disassemble-forward or :disassemble-backward t, prints the disassemble 
 </code></pre><p>
 
 <div class="codex-doc-node codex-operator codex-macro"><code class="codex-name">call</code><code class="codex-lambda-list">(model &amp;rest inputs &amp;aux (features (model-inlineable-p model)))</code><div class="codex-docstring">calls the given model's forward slot with inputs.</div></div>
-</p><p>Nodes defined this macro, works as if CLOS class, and they can have :parameters. However, what makes defnode distinct from them is that:</p><p>
+</p><p>Nodes which defined by this macro, works as if CLOS class, and they can have :parameters. However, what makes defnode distinct from them is that:</p><p>
 <b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; (time (call (ScalarAdd)(const 1.0)(const 1.0)))
 </code></pre><pre><code class="lisp">#Const(2.0 :dtype SINGLE-FLOAT :backward &lt;Node: SCALARADD{W924}&gt;)
@@ -432,7 +432,7 @@ It's all done. The backends you defined can be switched via (with-backend backen
 </code></pre><p>
 Adding new backends is no pain for cl-waffe!
 </p>
-<h1 id="mnist-example">MNIST Example</h1><p>Using features that I introduced, we can training MNIST. In practice, we need more features to implement it bluntly: defmodel. (気が向いたらちゃんと書く)
+<h1 id="mnist-example">MNIST Example</h1><p>Using features that I introduced, we can training MLP Model with MNIST Dataset. In practice, more additional features are needed to put it simply: defmodel and deftrainer.
 </p><h2 id="defines-your-model">Defines your model</h2><p><b>REPL:</b>
 </p><pre><code class="lisp">CL-WAFFE&gt; 
 (defmodel MLP (activation)
@@ -493,10 +493,10 @@ Adding new backends is no pain for cl-waffe!
 </code></pre><pre><code class="lisp">&lt;Trainer: MLPTRAINER()&gt;
 </code></pre><pre><code class="lisp">CL-WAFFE&gt; (slot-value trainer 'cl-waffe::optimizer)
 </code></pre><pre><code class="lisp">&lt;Optimizer: ADAM{W965}
-    Param: #&lt;GENERAL-HASH-TABLE :TEST EQL :COUNT 6 :WEAKNESS :VALUE {100FFD5C43}&gt;
+    Param: #&lt;GENERAL-HASH-TABLE :TEST EQL :COUNT 6 :WEAKNESS :VALUE {100EAEF273}&gt;
     LR : 0.001
-    Param: #&lt;HASH-TABLE :TEST EQL :COUNT 0 {100FFD5D33}&gt;
-    Param: #&lt;HASH-TABLE :TEST EQL :COUNT 0 {100FFD5DD3}&gt;
+    Param: #&lt;HASH-TABLE :TEST EQL :COUNT 0 {100EAEF363}&gt;
+    Param: #&lt;HASH-TABLE :TEST EQL :COUNT 0 {100EAEF403}&gt;
     N : 0
     EPSILON : 1.0e-7
     BETA1 : 0.9
@@ -504,10 +504,11 @@ Adding new backends is no pain for cl-waffe!
     [Total Param]: 535818
 &gt;
 </code></pre><p>
-All the code including loading the data is at here.
-lake is available.
-</p><pre><code class="shell">$ lake example:install
-$ lake example:mnist
+(This section is still under progress. However, here's a MLP model which can achive 98% valid_accuracy.)
+<a href="https://github.com/hikettei/cl-waffe/blob/main/examples/fnn.lisp">fnn.lisp</a>
+If you have cloned the cl-waffe's repository, Lakefile would be available:
+</p><pre><code class="shell">$ lake example:install # Install training dataset
+$ lake example:mnist # Start training. (batch-size=100)
 </code></pre><p>
 </p>
 
